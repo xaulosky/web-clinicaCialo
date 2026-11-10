@@ -86,6 +86,7 @@ const SE_PAGA_AL_RESERVAR = new Set([
     'consulta-tricologia',
     'consulta-medica-integral',
     'evaluacion-maxilofacial',
+    'consulta-psiquiatria',
 ]);
 
 export function urlReservaConsulta(consultaId?: string | null): string {

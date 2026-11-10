@@ -73,7 +73,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Traer exámenes previos si los tiene. No requiere preparación especial.',
         politicaCancelacion: 'Cancelar con mínimo 24 horas de anticipación. Reagendar sin costo.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-urologia',
         seo: {
             metaTitle: "Urólogo Los Ángeles | Cirugía y Estética Masculina | Clínica Cialo",
             metaDescription: "Reserva tu consulta urológica en Los Ángeles. Especialistas en vasectomía, engrosamiento peneano con ácido hialurónico (Urofill) y salud íntima masculina.",
@@ -115,7 +115,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Asiste sin maquillaje y, si consultas por las uñas, sin esmalte. Trae el listado de los productos y medicamentos que usas en la piel y los exámenes previos si los tienes.',
         politicaCancelacion: 'Cancelar con mínimo 24 horas de anticipación. Reagendar sin costo.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-dermatologia',
         servicioReservo: 'Consulta dermatológica',
         seo: {
             metaTitle: 'Consulta Dermatológica en Los Ángeles | Clínica CIALO',
@@ -174,7 +174,7 @@ export const consultasData: Consulta[] = [
         requisitos: 'Traer fotos previas si desea comparar resultados.',
         politicaCancelacion: 'Cancelar con mínimo 24 horas. El costo de evaluación puede descontarse en cirugía.',
         // Agenda general de reservo — la reserva online agenda con la Dra. Novoa
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar'
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/evaluacion-maxilofacial'
     },
     {
         id: 'evaluacion-estetica-facial',
@@ -247,7 +247,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Sin preparación especial.',
         politicaCancelacion: 'Cancelar con mínimo 24 horas de anticipación.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar'
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-medica-integral'
     },
     {
         id: 'consulta-flebologia',
@@ -274,7 +274,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Consulta incluye ecografía vascular. Traer exámenes previos si los tiene.',
         politicaCancelacion: 'Sin convenios Fonasa/Isapre. Cancelar con 24 horas de anticipación.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar'
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-flebologia'
     },
     {
         id: 'consulta-tricologia',
@@ -303,7 +303,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Traer exámenes hormonales si los tiene. Control: $20.000.',
         politicaCancelacion: 'Cancelar con 24 horas de anticipación.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar'
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-tricologia'
     },
     {
         id: 'consulta-ginecologia',
@@ -330,7 +330,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Traer exámenes ginecológicos previos si los tiene.',
         politicaCancelacion: 'Cancelar con mínimo 24 horas de anticipación.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-ginecologia',
         seo: {
             metaTitle: "Ginecólogo Los Ángeles: Clínica Cialo",
             metaDescription: "Agenda tu consulta ginecológica en Los Ángeles. Especialistas en rejuvenecimiento vaginal, ginecoestética y salud íntima integral.",
@@ -371,7 +371,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Control ginecológico: sin exámenes incluidos. PAP requiere citofijador.',
         politicaCancelacion: 'Cancelar con 24 horas de anticipación. Controles post-procedimiento incluidos.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-matrona',
         seo: {
             metaTitle: "Matrona en Los Ángeles | Control Ginecológico | Clínica Cialo",
             metaDescription: "Atención integral con Matrona en Los Ángeles. Control ginecológico, anticonceptivos, y salud sexual y reproductiva en Clínica Cialo.",
@@ -424,7 +424,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Idealmente en ayunas para mediciones. Ropa cómoda.',
         politicaCancelacion: 'Cancelar con 24 horas de anticipación.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar'
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/evaluacion-corporal'
     },
     {
         id: 'evaluacion-nutricional',
@@ -461,7 +461,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Idealmente en ayunas para InBody. Sin ejercicio intenso 24 hrs antes.',
         politicaCancelacion: 'Cancelar con 24 horas de anticipación. Control cada 4-6 semanas recomendado.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar'
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/nutricion'
     },
     {
         id: 'consulta-psicologia',
@@ -532,7 +532,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Traer exámenes o informes previos si los tiene.',
         politicaCancelacion: 'Cancelar con mínimo 24 horas de anticipación.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/analith-cuba',
         // La reserva online agenda siempre el bloque de ingreso (60 min)
         servicioReservo: 'Consulta Psiquiátrica Ingreso',
         seo: {

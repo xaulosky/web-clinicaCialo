@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ConsultaAddToCart from "../../components/ConsultaAddToCart";
 import { consultasData, getConsultaById } from "@/data/consultas";
-import { urlReservaProfesional } from "@/lib/reservaClinios";
+import { consultaSePagaAlReservar, urlReservaProfesional } from "@/lib/reservaClinios";
 import ReservaClinios from "../../components/ReservaClinios";
 
 interface PageProps {
@@ -305,6 +305,11 @@ export default async function ConsultaPage({ params }: PageProps) {
                                             Elige el día y la hora disponibles en la agenda real. La confirmación es inmediata
                                             y te contactaremos el día previo para confirmar tu asistencia.
                                         </p>
+                                        {consultaSePagaAlReservar(consulta.id) && (
+                                            <p className="text-sm text-[#1b1a18] mb-2 leading-relaxed">
+                                                El valor de la consulta se paga en línea al reservar, con Mercado Pago.
+                                            </p>
+                                        )}
                                     </div>
                                     <ReservaClinios
                                         agendaUrl={consulta.id === "evaluacion-estetica-facial" ? urlReservaProfesional("nicolas-laucirica") : consulta.agendaUrl}

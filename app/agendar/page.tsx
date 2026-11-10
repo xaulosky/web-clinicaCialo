@@ -56,7 +56,7 @@ export default function AgendarPage() {
                         Quiero agendar mi hora
                     </h1>
                     <p className="text-cream/70 font-light text-lg max-w-xl mx-auto leading-relaxed">
-                        Elijo mi tratamiento, profesional, fecha y hora. Reservar no tiene costo. Me toma menos de un minuto.
+                        Elijo mi tratamiento, profesional, fecha y hora. Las consultas médicas se pagan al reservar; las evaluaciones gratuitas no tienen costo. Me toma menos de un minuto.
                     </p>
 
                     {/* Señales de confianza */}

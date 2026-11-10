@@ -1,14 +1,14 @@
 'use client';
 
-// /agendar y /agendar?profesional= llevan a la reserva de ClíniOS. El enlace
+// /agendar, /agendar?profesional=, ?consulta= y ?categoria= llevan a la reserva de ClíniOS. El enlace
 // queda visible por si la redirección tarda o el navegador la bloquea.
 
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { urlReservaProfesional } from '@/lib/reservaClinios';
+import { urlReservaDesde } from '@/lib/reservaClinios';
 
 export default function AgendarBooking() {
-    const destino = urlReservaProfesional(useSearchParams().get('profesional'));
+    const destino = urlReservaDesde(useSearchParams());
 
     useEffect(() => {
         window.location.replace(destino);

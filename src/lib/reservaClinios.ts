@@ -52,8 +52,10 @@ const CONSULTAS: Readonly<Record<string, string>> = {
     'consulta-psicologia': 'fanny-cea-veloz',
     // Psiquiatría la atiende más de una profesional: el enlace del servicio muestra a quien tenga horas.
     'consulta-psiquiatria': 'consulta-psiquiatrica-ingreso',
-    // Los médicos no hacen evaluación: atienden la consulta médica estética integral.
-    'evaluacion-estetica-facial': 'consulta-medica-integral',
+    // La evaluación estética facial la hace el Dr. Laucirica: gratis L-Ma-J-V a las 09:00,
+    // 12:00 y 15:00; en otro bloque vale $30.000. Los demás médicos atienden la consulta
+    // médica estética integral.
+    'evaluacion-estetica-facial': 'evaluacion-estetica-facial',
 };
 
 const CATEGORIAS = new Set([
@@ -87,7 +89,6 @@ const SE_PAGA_AL_RESERVAR = new Set([
     'consulta-medica-integral',
     'evaluacion-maxilofacial',
     'consulta-psiquiatria',
-    'evaluacion-estetica-facial',
 ]);
 
 export function urlReservaConsulta(consultaId?: string | null): string {

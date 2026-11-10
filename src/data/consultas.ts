@@ -180,22 +180,18 @@ export const consultasData: Consulta[] = [
         id: 'evaluacion-estetica-facial',
         categoria: 'Medicina Estética Facial',
         iconPath: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
-        nombre: 'Consulta Médica Estética Facial',
+        nombre: 'Evaluación Estética Facial',
         descripcion: 'Evaluación avanzada del rostro con análisis clínico del envejecimiento y uso de tecnología Evelab Insight con IA. Se diseña un plan terapéutico no quirúrgico integral personalizado.',
-        valor: 30000,
-        valorTexto: '$30.000',
+        valor: null,
+        valorTexto: 'GRATUITA*',
         duracion: '20-30 min',
         reembolsable: false,
         profesionales: [
             {
                 nombre: 'Dr. Nicolás Laucirica',
                 especialidad: 'Medicina Estética Facial Avanzada',
-                disponibilidad: 'Los Ángeles: L-Ma-J-V 08:30-19:30, Sáb 08:00-14:30'
-            },
-            {
-                nombre: 'Dra. Mariane Kiss Molina',
-                especialidad: 'Armonización Orofacial',
-                disponibilidad: 'Miércoles y Jueves 10:00-19:00 hrs'
+                disponibilidad: 'Los Ángeles: L-Ma-J-V 08:30-19:30, Sáb 08:00-14:30',
+                condicionGratuidad: 'GRATUITA solo L-Ma-J-V a las 09:00, 12:00 y 15:00 hrs. Otros horarios: $30.000'
             }
         ],
         tratamientosAsociados: [
@@ -209,7 +205,7 @@ export const consultasData: Consulta[] = [
             'Láser CO₂ Resurfacing'
         ],
         requisitos: 'Sin maquillaje para mejor evaluación. Traer fotos si desea comparar.',
-        politicaCancelacion: 'Cancelar con mínimo 24 horas de anticipación. El valor de la evaluación se descuenta del tratamiento.'
+        politicaCancelacion: '*Gratuita en horarios 09:00, 12:00 y 15:00 (L-Ma-J-V). Otros horarios: $30.000 (se descuenta del tratamiento).'
     },
     {
         id: 'consulta-medica-integral',

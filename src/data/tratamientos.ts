@@ -2958,7 +2958,9 @@ export const formatPrice = (
 };
 
 /**
- * AGENDAS DE RESERVO — links públicos de "reserva online" (del panel de Reservo).
+ * AGENDAS — enlaces de reserva de ClíniOS (Configuración › Reservas online). Los
+ * vigentes se pueden ver en https://reservas.clinios.cl/api/publico/cialo/sitio-web.
+ * La hora y su pago se resuelven en ClíniOS: este sitio solo enlaza.
  * getAgendaUrl() asigna a cada tratamiento la agenda correcta según su tipo.
  */
 const AG = {
@@ -2966,28 +2968,31 @@ const AG = {
     pena:         "https://reservas.clinios.cl/cialo/reservar/elga-viviana-pena", // Dra. Viviana Peña
     kerenMatus:   "https://reservas.clinios.cl/cialo/reservar", // Klga. Keren Matus
     kuncar:       "https://reservas.clinios.cl/cialo/reservar/stefania-kuncar", // Matrona Stefania Kuncar
+    contrerasMJ:  "https://reservas.clinios.cl/cialo/reservar/maria-jesus-contreras", // Enf. María Jesús Contreras
+    kinesiologia: "https://reservas.clinios.cl/cialo/reservar/kinesiologia", // Kinesiología: drenaje, Emsella y evaluación dermatofuncional
     guillermo:    "https://reservas.clinios.cl/cialo/reservar/guillermo-contreras", // Dr. Guillermo Contreras
     araya:        "https://reservas.clinios.cl/cialo/reservar/javiera-araya", // Dra. Javiera Araya (capilar)
     gonzalez:     "https://reservas.clinios.cl/cialo/reservar/francisca-gonzalez", // Dra. Francisca González (vascular)
-    villarroel:   "https://reservas.clinios.cl/cialo/reservar", // Dra. María Laura Villarroel (gineco)
-    urologia:     "https://reservas.clinios.cl/cialo/reservar", // Consulta Urológica (Contreras + Ulloa)
-    nutricion:    "https://reservas.clinios.cl/cialo/reservar", // Consulta Nutricional
-    inbody:       "https://reservas.clinios.cl/cialo/reservar", // InBody 970
-    calorimetria: "https://reservas.clinios.cl/cialo/reservar", // Calorimetría
-    hydrafacial:  "https://reservas.clinios.cl/cialo/reservar", // Hydrafacial
-    limpieza:     "https://reservas.clinios.cl/cialo/reservar", // Limpieza facial convencional
-    hollywood:    "https://reservas.clinios.cl/cialo/reservar", // Hollywood peel
-    depilacion:   "https://reservas.clinios.cl/cialo/reservar", // Depilación láser sesión
-    estetica:     "https://reservas.clinios.cl/cialo/reservar", // Consulta Médica Estética Integral
-    corporal:     "https://reservas.clinios.cl/cialo/reservar", // Evaluación Corporal Integral
+    villarroel:   "https://reservas.clinios.cl/cialo/reservar/maria-laura-villarroel", // Dra. María Laura Villarroel (gineco)
+    urologia:     "https://reservas.clinios.cl/cialo/reservar/consulta-urologia", // Consulta Urológica (Contreras + Ulloa)
+    nutricion:    "https://reservas.clinios.cl/cialo/reservar/nutricion", // Nutrición: la paciente elige evaluación inicial o control
+    inbody:       "https://reservas.clinios.cl/cialo/reservar/nutricion", // InBody 970 (dentro de Nutrición)
+    calorimetria: "https://reservas.clinios.cl/cialo/reservar/nutricion", // Calorimetría (dentro de Nutrición)
+    hydrafacial:  "https://reservas.clinios.cl/cialo/reservar/limpieza-hydrafacial", // Hydrafacial
+    limpieza:     "https://reservas.clinios.cl/cialo/reservar/limpieza-facial", // Limpieza facial convencional
+    hollywood:    "https://reservas.clinios.cl/cialo/reservar/hollywood-peel", // Hollywood peel
+    depilacion:   "https://reservas.clinios.cl/cialo/reservar/depilacion-laser", // Depilación láser: la paciente elige la zona
+    estetica:     "https://reservas.clinios.cl/cialo/reservar/consulta-medica-integral", // Consulta Médica Estética Integral
+    corporal:     "https://reservas.clinios.cl/cialo/reservar/evaluacion-corporal", // Evaluación Corporal Integral
     completa:     "https://reservas.clinios.cl/cialo/reservar", // Agenda Completa (fallback)
 };
 
-// === Agendas combinadas POR CREAR en Reservo (multi-profesional) ===
-// Mientras no existan, se usa una agenda existente cercana (interino).
-const AG_INYECTABLES: string = ""; // pega aquí el link cuando crees "Inyectables / Estética facial" (Nicolás, Peña, Kiss, Atencio)
-const AG_APARATO: string = "";     // pega aquí el link cuando crees "Aparatología corporal" (Keren Matus, M.J. Contreras, K. Neumann)
-// Sin agenda combinada todavía → estos tratamientos van a WhatsApp.
+// === Agendas combinadas (multi-profesional) ===
+// En ClíniOS son los enlaces por categoría: la paciente elige el tratamiento o la
+// evaluación y después con quién, entre quienes lo hacen.
+const AG_INYECTABLES: string = "https://reservas.clinios.cl/cialo/reservar/estetica-facial";   // Inyectables / Estética facial (Nicolás, Peña, Kiss, Atencio)
+const AG_APARATO: string = "https://reservas.clinios.cl/cialo/reservar/estetica-corporal";      // Aparatología corporal (M.J. Contreras, K. Neumann): Exilis, Embody y evaluación corporal
+// Si alguna quedara vacía, esos tratamientos van a WhatsApp.
 const INYECTABLES: string | null = AG_INYECTABLES || null;
 const APARATO: string | null = AG_APARATO || null;
 const WSP = null; // depende del caso → derivar a WhatsApp
@@ -3001,7 +3006,7 @@ const AGENDA_POR_ID: Record<string, string | null> = {
     "cool-peel": AG.laucirica, "rinomodelacion": AG.laucirica, "labios-ah": AG.laucirica,
     "relleno-ah-pena": AG.laucirica, "borrado-tatuajes": AG.laucirica,
     "toxina-hiperhidrosis": AG.pena, "reseccion-lunares": AG.pena, "eliminacion-verrugas": AG.pena,
-    "juvelook": AG.pena, "vitaminas-mesoterapia": AG.pena, "morpheus8-pena": AG.kerenMatus,
+    "juvelook": AG.pena, "vitaminas-mesoterapia": AG.pena, "morpheus8-pena": AG.pena,
     "peeling-quimico": AG.kuncar,
     "hollywood-peel": AG.hollywood, "hydrafacial": AG.hydrafacial, "limpieza-facial-manual": AG.limpieza,
     "rosacea-tratamiento": AG.estetica, "melasma-tratamiento": AG.estetica,
@@ -3018,7 +3023,7 @@ const AGENDA_POR_ID: Record<string, string | null> = {
     "lanluma": AG.pena, "enzimas-pena": AG.pena,
     "blanqueamiento-axilas": AG.kuncar,
     "depilacion-laser": AG.depilacion,
-    "onicomicosis-laser-co2": AG.corporal, "drenaje-linfatico-avanzado": AG.corporal, "drenaje-linfatico": AG.corporal,
+    "onicomicosis-laser-co2": AG.contrerasMJ, "drenaje-linfatico-avanzado": AG.kinesiologia, "drenaje-linfatico": AG.kinesiologia,
     // Corporal — APARATOLOGÍA (combinada, por crear)
     "clatuu-alpha": APARATO, "embody": APARATO, "exilis-corporal": APARATO,
     "scizer": APARATO, "xwave": APARATO, "ultrasonido-corporal": APARATO,
@@ -3031,6 +3036,8 @@ const AGENDA_POR_ID: Record<string, string | null> = {
     "rejuvenecimiento-vaginal": AG.villarroel, "peeling-intimo": AG.villarroel,
     // Vascular → Dra. González
     "escleroterapia": AG.gonzalez, "laser-vascular": AG.gonzalez, "laser-vascular-varices": AG.gonzalez,
+    // Lipoláser (Dra. Peña): se evalúa en la consulta médica
+    "lipolaser-corporal": AG.estetica, "lipo-lifting": AG.estetica,
     // Nutrición
     "consulta-nutricional": AG.nutricion, "examen-inbody": AG.inbody, "examen-calorimetria": AG.calorimetria,
     "manejo-sobrepeso": AG.pena,

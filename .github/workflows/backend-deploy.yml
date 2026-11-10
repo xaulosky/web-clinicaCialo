@@ -1,0 +1,130 @@
+name: Deploy Laravel Backend to cPanel
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-deploy.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, bcmath
+
+      - name: 📦 Install Composer dependencies
+        working-directory: ./backend
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+
+      - name: 🔑 Generate APP_KEY
+        working-directory: ./backend
+        run: php artisan key:generate --show > app_key.txt
+
+      - name: 📝 Create production .env
+        working-directory: ./backend
+        run: |
+          cat > .env << 'EOF'
+          APP_NAME="Clinica Cialo API"
+          APP_ENV=production
+          APP_KEY=${{ secrets.APP_KEY }}
+          APP_DEBUG=false
+          APP_URL=https://api.cialo.cl
+          
+          FRONTEND_URL=https://cialo.cl
+          
+          LOG_CHANNEL=stack
+          LOG_LEVEL=warning
+          
+          DB_CONNECTION=mysql
+          DB_HOST=localhost
+          DB_PORT=3306
+          DB_DATABASE=${{ secrets.DB_NAME }}
+          DB_USERNAME=${{ secrets.DB_USER }}
+          DB_PASSWORD=${{ secrets.DB_PASS }}
+          
+          BROADCAST_DRIVER=log
+          CACHE_DRIVER=file
+          FILESYSTEM_DISK=local
+          QUEUE_CONNECTION=sync
+          SESSION_DRIVER=file
+          SESSION_LIFETIME=120
+          
+          MAIL_MAILER=smtp
+          MAIL_HOST=mail.cialo.cl
+          MAIL_PORT=465
+          MAIL_USERNAME=no-responder@cialo.cl
+          MAIL_PASSWORD=${{ secrets.SMTP_PASSWORD }}
+          MAIL_ENCRYPTION=ssl
+          MAIL_FROM_ADDRESS=no-responder@cialo.cl
+          MAIL_FROM_NAME="Clinica Cialo"
+          
+          TRANSBANK_ENVIRONMENT=production
+          TRANSBANK_COMMERCE_CODE=${{ secrets.TRANSBANK_COMMERCE_CODE }}
+          TRANSBANK_API_KEY=${{ secrets.TRANSBANK_API_KEY }}
+          
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          JWT_TTL=10080
+          
+          SANCTUM_STATEFUL_DOMAINS=cialo.cl,www.cialo.cl
+          EOF
+
+      - name: 🚀 Optimize Laravel
+        working-directory: ./backend
+        run: |
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
+          php artisan event:cache
+
+      - name: 📦 Create deployment package
+        run: |
+          cd backend
+          zip -rq ../backend-deploy.zip \
+            app/ bootstrap/ config/ database/ public/ routes/ \
+            storage/ vendor/ artisan .env \
+            -x "storage/logs/*" "storage/framework/cache/*" \
+               "storage/framework/sessions/*" "storage/framework/views/*"
+
+      - name: 📤 Upload ZIP to cPanel
+        run: |
+          curl -v --ftp-create-dirs \
+            -T backend-deploy.zip \
+            ftp://216.246.47.183/backend-deploy.zip \
+            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" \
+            --ftp-skip-pasv-ip --connect-timeout 30 --max-time 300
+
+      - name: 📤 Upload deploy script
+        run: |
+          curl -v --ftp-create-dirs \
+            -T .github/deploy-scripts/deploy-backend.php \
+            ftp://216.246.47.183/deploy-backend.php \
+            --user "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWORD }}" \
+            --ftp-skip-pasv-ip
+
+      - name: ⏳ Wait for FTP propagation
+        run: sleep 10
+
+      - name: 💥 Execute remote deployment
+        run: |
+          RESPONSE=$(curl -sS --max-time 120 https://cialo.cl/deploy-backend.php)
+          echo "$RESPONSE"
+          if echo "$RESPONSE" | grep -q "ERROR"; then
+            echo "❌ Deployment failed"
+            exit 1
+          fi
+          echo "✅ Deployment successful"
+
+      - name: 📤 Upload artifact for debugging
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-deploy
+          path: backend-deploy.zip

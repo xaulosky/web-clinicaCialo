@@ -1,0 +1,47 @@
+RewriteEngine On
+
+# Reenviar el header Authorization a PHP (FastCGI/CGI lo descartan por defecto).
+# Sin esto, la autenticación JWT del admin queda inerte en producción.
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
+# Redirigir todo a index.php excepto archivos existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Seguridad: bloquear acceso a archivos sensibles
+<FilesMatch "^(config\.php|\.env|composer\.json|composer\.lock)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquear logs, dumps y SQL que puedan quedar en el webroot
+<FilesMatch "\.(log|txt|sql|md|bak)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquear scripts de diagnostico/deploy sueltos en el webroot.
+# Se dejaron de pruebas y quedaron accesibles sin autenticacion: db_test
+# filtraba nombre de BD y usuario, transbank_check el commerce code y parte
+# de la API key, order_debug CREABA una orden real en cada visita, y
+# extract_backend extraia cualquier zip (?file=) dentro de la API.
+# Los archivos deben borrarse del servidor; esta regla es la segunda barrera.
+<FilesMatch "^(db_test|order_debug|order_debug_cancel|transbank_check|transbank_check_mall|extract_backend|unzip|deploy-backend|.*_test|.*_debug)\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquear acceso a directorios
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# Headers de seguridad (el CORS lo gestiona index.php con allowlist)
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>

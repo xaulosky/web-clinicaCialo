@@ -1,0 +1,12 @@
+---
+import { renderArticleHtml } from "../../lib/rich-text";
+
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props as Props;
+const html = renderArticleHtml(content);
+---
+
+<div class="prose-cialo" set:html={html}></div>

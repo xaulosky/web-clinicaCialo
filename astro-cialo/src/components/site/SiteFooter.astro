@@ -1,0 +1,119 @@
+---
+import { categoriasData } from "@/data/categorias";
+import { CONTACT_EMAIL, CONTACT_PHONE, WHATSAPP_URL } from "../../lib/site";
+
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { href: "/", label: "Inicio" },
+  { href: "/tratamientos/", label: "Tratamientos" },
+  { href: "/blog/", label: "Blog" },
+  { href: "/profesionales/", label: "Profesionales" },
+  { href: "/contacto/", label: "Contacto" }
+];
+---
+
+<footer class="border-t border-cialo-gold/10 bg-cialo-dark text-white">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_0.9fr_1fr_1.2fr] lg:px-8">
+    <div>
+      <img
+        src="/logo-cialo.png"
+        alt="Clínica Cialo"
+        class="h-11 w-auto brightness-0 invert"
+      />
+      <p class="mt-5 max-w-md text-sm leading-7 text-cialo-silver">
+        Combinamos ciencia, experiencia clínica y tecnología para entregar tratamientos
+        personalizados, seguros y medibles.
+      </p>
+      <div class="mt-6 flex gap-3">
+        <a
+          href="https://www.instagram.com/clinicacialo/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-cialo-silver transition hover:border-cialo-gold hover:text-white"
+          aria-label="Instagram"
+        >
+          <i class="fa-brands fa-instagram text-lg"></i>
+        </a>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-cialo-silver transition hover:border-cialo-gold hover:text-white"
+          aria-label="WhatsApp"
+        >
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-lg">Navegación</h3>
+      <ul class="mt-5 space-y-3 text-sm text-cialo-silver">
+        {
+          quickLinks.map((link) => (
+            <li>
+              <a class="transition hover:text-cialo-gold" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-lg">Categorías</h3>
+      <ul class="mt-5 space-y-3 text-sm text-cialo-silver">
+        {
+          categoriasData.map((category) => (
+            <li>
+              <a
+                class="transition hover:text-cialo-gold"
+                href={`/tratamientos/categoria/${category.slug}/`}
+              >
+                {category.nombre}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-lg">Contacto</h3>
+      <div class="mt-5 space-y-4 text-sm leading-7 text-cialo-silver">
+        <p>Bulnes 220, Of. 509, Edificio Puerto Mayor II, Los Ángeles, Biobío.</p>
+        <p>
+          <a class="transition hover:text-cialo-gold" href="tel:+56982028473">
+            {CONTACT_PHONE}
+          </a>
+        </p>
+        <p>
+          <a class="transition hover:text-cialo-gold" href={`mailto:${CONTACT_EMAIL}`}>
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex rounded-full bg-cialo-gold px-5 py-3 font-semibold text-cialo-dark transition hover:bg-white"
+        >
+          Agendar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-xs text-cialo-silver sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <p>© {currentYear} Clínica Cialo. Todos los derechos reservados.</p>
+      <div class="flex flex-wrap gap-4">
+        <a class="transition hover:text-cialo-gold" href="/privacidad/">Privacidad</a>
+        <a class="transition hover:text-cialo-gold" href="/terminos/">Términos</a>
+        <a class="transition hover:text-cialo-gold" href="/politica-pagos/">Pagos</a>
+      </div>
+    </div>
+  </div>
+</footer>

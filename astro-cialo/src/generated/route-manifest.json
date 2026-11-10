@@ -1,0 +1,338 @@
+[
+  {
+    "route": "/admin/afiliados",
+    "dynamic": false
+  },
+  {
+    "route": "/admin/comisiones",
+    "dynamic": false
+  },
+  {
+    "route": "/admin/cupones",
+    "dynamic": false
+  },
+  {
+    "route": "/admin/detalle-pedido",
+    "dynamic": false
+  },
+  {
+    "route": "/admin/login",
+    "dynamic": false
+  },
+  {
+    "route": "/admin",
+    "dynamic": false
+  },
+  {
+    "route": "/admin/pedidos",
+    "dynamic": false
+  },
+  {
+    "route": "/armonizacion-orofacial-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/arquitectura",
+    "dynamic": false
+  },
+  {
+    "route": "/blog/[slug]",
+    "dynamic": true
+  },
+  {
+    "route": "/blog",
+    "dynamic": false
+  },
+  {
+    "route": "/calorimetria-indirecta-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/checkout",
+    "dynamic": false
+  },
+  {
+    "route": "/cirugia-estetica-en-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/cirujano-vascular-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/clatuu-alpha-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/confirmacion-cita",
+    "dynamic": false
+  },
+  {
+    "route": "/confirmacion",
+    "dynamic": false
+  },
+  {
+    "route": "/consultas/[id]",
+    "dynamic": true
+  },
+  {
+    "route": "/consultas",
+    "dynamic": false
+  },
+  {
+    "route": "/contacto",
+    "dynamic": false
+  },
+  {
+    "route": "/convenios/club-golf-7-rios",
+    "dynamic": false
+  },
+  {
+    "route": "/convenios",
+    "dynamic": false
+  },
+  {
+    "route": "/corporal-contorno-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/cyber",
+    "dynamic": false
+  },
+  {
+    "route": "/depilacion-laser-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/dia-de-la-madre",
+    "dynamic": false
+  },
+  {
+    "route": "/dr-nicolas-laucirica",
+    "dynamic": false
+  },
+  {
+    "route": "/dra-francisca-gonzalez",
+    "dynamic": false
+  },
+  {
+    "route": "/dra-maria-laura-villarroel",
+    "dynamic": false
+  },
+  {
+    "route": "/elga-viviana-pena",
+    "dynamic": false
+  },
+  {
+    "route": "/engrosamiento-peneano-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/escleroterapia-consulta-vascular-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/escleroterapia-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/estetica-facial-en-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/evaluacion-tratamientos",
+    "dynamic": false
+  },
+  {
+    "route": "/exilis-ultra-360-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/frank-ulloa",
+    "dynamic": false
+  },
+  {
+    "route": "/giftcard-depilacion-zona-pequena",
+    "dynamic": false
+  },
+  {
+    "route": "/ginecologo-los-angeles-chile",
+    "dynamic": false
+  },
+  {
+    "route": "/guillermo-contreras",
+    "dynamic": false
+  },
+  {
+    "route": "/hydrafacial-md-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/inbody-970-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/injerto-capilar-fue-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/injerto-capilar-los-angeles-chile",
+    "dynamic": false
+  },
+  {
+    "route": "/javiera-araya",
+    "dynamic": false
+  },
+  {
+    "route": "/katalina-neumann",
+    "dynamic": false
+  },
+  {
+    "route": "/keren-matus",
+    "dynamic": false
+  },
+  {
+    "route": "/laser-avanzado-en-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/laser-co2-vaginal-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/links",
+    "dynamic": false
+  },
+  {
+    "route": "/maria-jesus-contreras",
+    "dynamic": false
+  },
+  {
+    "route": "/mariane-kiss",
+    "dynamic": false
+  },
+  {
+    "route": "/matrona-los-angeles-chile",
+    "dynamic": false
+  },
+  {
+    "route": "/medicacion-control-peso-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/mi-cuenta/afiliado",
+    "dynamic": false
+  },
+  {
+    "route": "/mi-cuenta/detalle-pedido",
+    "dynamic": false
+  },
+  {
+    "route": "/mi-cuenta/login",
+    "dynamic": false
+  },
+  {
+    "route": "/mi-cuenta",
+    "dynamic": false
+  },
+  {
+    "route": "/mi-cuenta/perfil",
+    "dynamic": false
+  },
+  {
+    "route": "/mi-cuenta/registro",
+    "dynamic": false
+  },
+  {
+    "route": "/morpheus8-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/nosotros",
+    "dynamic": false
+  },
+  {
+    "route": "/nutricionista-los-angeles-chile",
+    "dynamic": false
+  },
+  {
+    "route": "/",
+    "dynamic": false
+  },
+  {
+    "route": "/politica-pagos",
+    "dynamic": false
+  },
+  {
+    "route": "/privacidad",
+    "dynamic": false
+  },
+  {
+    "route": "/productos/[slug]",
+    "dynamic": true
+  },
+  {
+    "route": "/productos",
+    "dynamic": false
+  },
+  {
+    "route": "/profesionales/[id]",
+    "dynamic": true
+  },
+  {
+    "route": "/profesionales",
+    "dynamic": false
+  },
+  {
+    "route": "/relleno-labios-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/rinomodelacion-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/scizer-hifu-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/sculptra-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/soprano-titanium-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/stefania-kuncar",
+    "dynamic": false
+  },
+  {
+    "route": "/terminos",
+    "dynamic": false
+  },
+  {
+    "route": "/toxina-botulinica-tercio-superior-los-angeles",
+    "dynamic": false
+  },
+  {
+    "route": "/tratamientos/[id]",
+    "dynamic": true
+  },
+  {
+    "route": "/tratamientos/categoria/[slug]",
+    "dynamic": true
+  },
+  {
+    "route": "/tratamientos",
+    "dynamic": false
+  },
+  {
+    "route": "/urologo-los-angeles-chile",
+    "dynamic": false
+  },
+  {
+    "route": "/valentina-verdejo",
+    "dynamic": false
+  }
+]

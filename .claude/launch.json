@@ -1,0 +1,32 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web-cialo-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "mock-admin-api",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/mock-admin-api.mjs"
+      ],
+      "port": 4010
+    },
+    {
+      "name": "web-admin-mock",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "set NEXT_PUBLIC_API_URL=http://localhost:4010&& npm run dev"
+      ],
+      "port": 3000
+    }
+  ]
+}

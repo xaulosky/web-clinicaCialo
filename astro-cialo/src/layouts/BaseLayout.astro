@@ -1,0 +1,251 @@
+---
+import "../styles/global.css";
+
+interface LayoutProps {
+  metadata?: Record<string, any>;
+  pathname?: string;
+}
+
+const SITE_URL = "https://cialo.cl";
+const DEFAULT_TITLE = "Clínica Estética Los Ángeles | Medicina Estética | Clínica Cialo";
+const DEFAULT_DESCRIPTION =
+  "En Clínica Cialo combinamos ciencia, experiencia y tecnología para lograr resultados naturales, seguros y clínicamente medibles.";
+
+const { metadata = {}, pathname = "/" } = Astro.props as LayoutProps;
+
+const titleValue = metadata.title;
+const resolvedTitle =
+  typeof titleValue === "string"
+    ? titleValue
+    : titleValue?.absolute ?? titleValue?.default ?? DEFAULT_TITLE;
+
+const description = metadata.description ?? DEFAULT_DESCRIPTION;
+const keywords = Array.isArray(metadata.keywords)
+  ? metadata.keywords.join(", ")
+  : metadata.keywords;
+const robots =
+  typeof metadata.robots === "string"
+    ? metadata.robots
+    : metadata.robots?.index || undefined;
+
+const canonicalPath = metadata.alternates?.canonical ?? pathname;
+const canonicalUrl = new URL(
+  canonicalPath.startsWith("http") ? canonicalPath : canonicalPath,
+  SITE_URL
+).toString();
+
+const openGraph = metadata.openGraph ?? {};
+const ogTitle =
+  openGraph.title ?? resolvedTitle ?? DEFAULT_TITLE;
+const ogDescription =
+  openGraph.description ?? description;
+const ogType = openGraph.type ?? "website";
+const ogUrl = new URL(
+  openGraph.url ?? canonicalUrl,
+  SITE_URL
+).toString();
+const ogLocale = openGraph.locale ?? "es_CL";
+const ogImages = Array.isArray(openGraph.images)
+  ? openGraph.images
+  : openGraph.images
+    ? [openGraph.images]
+    : [];
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{resolvedTitle}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    {robots && <meta name="robots" content={robots} />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" sizes="512x512" />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const transparentNavs = new WeakSet();
+
+        const getNavs = () => Array.from(document.querySelectorAll("nav.fixed"));
+
+        const rememberTransparentNavs = () => {
+          getNavs().forEach((nav) => {
+            if (nav.classList.contains("bg-transparent") || nav.dataset.cialoTransparent === "true") {
+              transparentNavs.add(nav);
+              nav.dataset.cialoTransparent = "true";
+            }
+          });
+        };
+
+        const setImportant = (element, property, value) => {
+          element.style.setProperty(property, value, "important");
+        };
+
+        const clearProperty = (element, property) => {
+          element.style.removeProperty(property);
+        };
+
+        const applyScrolledNavbar = (nav) => {
+          setImportant(nav, "background", "rgba(255, 255, 255, 0.98)");
+          setImportant(nav, "color", "#4f4f51");
+          setImportant(nav, "box-shadow", "0 10px 15px -3px rgba(0,0,0,.10), 0 4px 6px -4px rgba(0,0,0,.10)");
+          setImportant(nav, "backdrop-filter", "blur(8px)");
+
+          nav.querySelectorAll("img[alt*='Cialo']").forEach((img) => {
+            setImportant(img, "filter", "none");
+          });
+
+          nav.querySelectorAll("a, button, svg").forEach((item) => {
+            if (item.closest(".absolute.top-full")) return;
+            setImportant(item, "color", "#4f4f51");
+          });
+
+          nav.querySelectorAll("a[href='/evaluacion-tratamientos/'], a[href='/evaluacion-tratamientos']").forEach((cta) => {
+            setImportant(cta, "background", "#d4c1a0");
+            setImportant(cta, "border-color", "#d4c1a0");
+            setImportant(cta, "color", "#fff");
+          });
+        };
+
+        const clearScrolledNavbar = (nav) => {
+          ["background", "color", "box-shadow", "backdrop-filter"].forEach((property) => {
+            clearProperty(nav, property);
+          });
+
+          nav.querySelectorAll("img[alt*='Cialo']").forEach((img) => {
+            clearProperty(img, "filter");
+          });
+
+          nav.querySelectorAll("a, button, svg").forEach((item) => {
+            clearProperty(item, "color");
+          });
+
+          nav.querySelectorAll("a[href='/evaluacion-tratamientos/'], a[href='/evaluacion-tratamientos']").forEach((cta) => {
+            ["background", "border-color", "color"].forEach((property) => {
+              clearProperty(cta, property);
+            });
+          });
+        };
+
+        const updateNavbarScrollState = () => {
+          const isScrolled = window.scrollY > 20;
+          root.toggleAttribute("data-cialo-scrolled", isScrolled);
+          rememberTransparentNavs();
+
+          getNavs().forEach((nav) => {
+            if (!transparentNavs.has(nav)) return;
+
+            if (isScrolled) {
+              applyScrolledNavbar(nav);
+            } else {
+              clearScrolledNavbar(nav);
+            }
+          });
+        };
+
+        updateNavbarScrollState();
+        window.addEventListener("scroll", updateNavbarScrollState, { passive: true });
+        window.addEventListener("DOMContentLoaded", updateNavbarScrollState);
+        window.addEventListener("pageshow", updateNavbarScrollState);
+        window.addEventListener("astro:load", updateNavbarScrollState);
+
+        new MutationObserver(updateNavbarScrollState).observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ["class"]
+        });
+      })();
+    </script>
+    <script>
+      import "../scripts/evaluation-wizard-fallback";
+    </script>
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    {openGraph.siteName && <meta property="og:site_name" content={openGraph.siteName} />}
+    {
+      ogImages.map((image) => {
+        const imageUrl = typeof image === "string" ? image : image?.url;
+        const width = typeof image === "object" ? image?.width : undefined;
+        const height = typeof image === "object" ? image?.height : undefined;
+        const alt = typeof image === "object" ? image?.alt : undefined;
+
+        if (!imageUrl) {
+          return null;
+        }
+
+        return (
+          <>
+            <meta property="og:image" content={new URL(imageUrl, SITE_URL).toString()} />
+            {width && <meta property="og:image:width" content={String(width)} />}
+            {height && <meta property="og:image:height" content={String(height)} />}
+            {alt && <meta property="og:image:alt" content={alt} />}
+          </>
+        );
+      })
+    }
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Poppins:wght@300;400;500;600&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet" />
+    <style is:inline>
+      :root {
+        --font-italiana: 'Italiana', serif;
+        --font-poppins: 'Poppins', sans-serif;
+        --font-comfortaa: 'Comfortaa', sans-serif;
+      }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HV0M1TN00"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5HV0M1TN00');
+    </script>
+    <script is:inline>
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "v1xmcvrwy0");
+    </script>
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '37311405751791578');
+      fbq('track', 'PageView');
+    </script>
+    <slot name="head" />
+  </head>
+  <body class="antialiased">
+    <slot />
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=37311405751791578&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
+  </body>
+</html>

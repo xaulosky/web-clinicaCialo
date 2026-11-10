@@ -1,0 +1,65 @@
+---
+import type { BlogPost } from "@/data/blog";
+import { formatDate, getPostHref } from "../../lib/site";
+
+interface Props {
+  post: BlogPost;
+  featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props as Props;
+const href = getPostHref(post);
+---
+
+<article class={`group overflow-hidden rounded-[2rem] border border-cialo-gold/15 bg-white shadow-[0_24px_60px_-42px_rgba(29,29,29,0.5)] transition duration-300 hover:-translate-y-1 hover:border-cialo-gold/40 ${
+  featured ? "lg:grid lg:grid-cols-[1.05fr_0.95fr]" : ""
+}`}>
+  <a href={href} class="block h-full">
+    <div class={`relative overflow-hidden ${featured ? "min-h-[22rem]" : "aspect-[16/10]"}`}>
+      <img
+        src={post.imagen}
+        alt={post.titulo}
+        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/55 to-transparent"></div>
+      <div class="absolute bottom-5 left-5 flex flex-wrap gap-2">
+        <span class="rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-cialo-dark">
+          {post.categoria}
+        </span>
+        {post.destacado && (
+          <span class="rounded-full bg-cialo-gold px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-cialo-dark">
+            Destacado
+          </span>
+        )}
+      </div>
+    </div>
+
+    <div class="p-6 md:p-7">
+      <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-cialo-gray">
+        <span>{formatDate(post.fechaPublicacion)}</span>
+        <span>•</span>
+        <span>{post.tiempoLectura}</span>
+      </div>
+
+      <h3 class={`mt-4 leading-tight text-cialo-dark transition group-hover:text-cialo-gold ${
+        featured ? "text-3xl md:text-4xl" : "text-2xl"
+      }`}>
+        {post.titulo}
+      </h3>
+      <p class="mt-4 text-sm leading-7 text-cialo-gray md:text-base">
+        {post.extracto}
+      </p>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+        {
+          post.tags.slice(0, featured ? 4 : 3).map((tag) => (
+            <span class="rounded-full border border-cialo-gold/15 px-3 py-1 text-xs text-cialo-gray">
+              #{tag}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </a>
+</article>

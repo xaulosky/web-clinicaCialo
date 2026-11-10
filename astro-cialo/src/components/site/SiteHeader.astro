@@ -1,0 +1,122 @@
+---
+import { categoriasData } from "@/data/categorias";
+import { CONTACT_PHONE, WHATSAPP_URL } from "../../lib/site";
+
+interface Props {
+  pathname?: string;
+}
+
+const { pathname = "/" } = Astro.props as Props;
+
+const navLinks = [
+  { href: "/", label: "Inicio" },
+  { href: "/tratamientos/", label: "Tratamientos" },
+  { href: "/blog/", label: "Blog" },
+  { href: "/profesionales/", label: "Equipo" },
+  { href: "/contacto/", label: "Contacto" }
+];
+
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<header class="sticky top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur-xl">
+  <div class="hidden border-b border-white/10 bg-cialo-dark text-cialo-silver md:block">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs sm:px-6 lg:px-8">
+      <p>Medicina estética avanzada en Los Ángeles, Chile.</p>
+      <a class="transition hover:text-cialo-gold" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+        {CONTACT_PHONE}
+      </a>
+    </div>
+  </div>
+
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
+    <a class="flex items-center gap-3" href="/">
+      <img
+        src="/logo-cialo.png"
+        alt="Clínica Cialo"
+        class="h-10 w-auto"
+        loading="eager"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-6 lg:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition ${
+              isActive(link.href)
+                ? "text-cialo-gold"
+                : "text-cialo-gray hover:text-cialo-dark"
+            }`}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 sm:flex">
+      <a
+        href="/tratamientos/"
+        class="rounded-full border border-cialo-gold/40 px-4 py-2 text-sm font-medium text-cialo-dark transition hover:border-cialo-dark hover:bg-cialo-dark hover:text-white"
+      >
+        Explorar catálogo
+      </a>
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-cialo-gold px-4 py-2 text-sm font-semibold text-cialo-dark transition hover:bg-cialo-dark hover:text-white"
+      >
+        WhatsApp
+      </a>
+    </div>
+
+    <details class="relative lg:hidden">
+      <summary class="flex cursor-pointer list-none items-center gap-2 rounded-full border border-cialo-gold/30 px-4 py-2 text-sm font-medium text-cialo-dark">
+        Menú
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 8h16M4 16h16" />
+        </svg>
+      </summary>
+      <div class="absolute right-0 top-full mt-3 w-80 rounded-[2rem] border border-cialo-gold/20 bg-white p-5 shadow-2xl">
+        <div class="space-y-2">
+          {
+            navLinks.map((link) => (
+              <a
+                href={link.href}
+                class={`block rounded-2xl px-4 py-3 text-sm transition ${
+                  isActive(link.href)
+                    ? "bg-cialo-dark text-white"
+                    : "bg-cialo-light text-cialo-dark hover:bg-cialo-gold/10"
+                }`}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="mt-5 border-t border-cialo-gold/10 pt-5">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-cialo-gray">
+            Categorías
+          </p>
+          <div class="grid grid-cols-2 gap-2">
+            {
+              categoriasData.map((category) => (
+                <a
+                  href={`/tratamientos/categoria/${category.slug}/`}
+                  class="rounded-2xl border border-cialo-gold/15 px-3 py-2 text-sm text-cialo-dark transition hover:border-cialo-gold hover:bg-cialo-gold/10"
+                >
+                  {category.nombre}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>

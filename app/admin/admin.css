@@ -1,0 +1,153 @@
+/* Tema del panel de administración.
+ *
+ * Las ~11 páginas del admin se escribieron en momentos distintos, cada una con
+ * su propia mezcla de sombras, radios y tipografías. En vez de reescribirlas una
+ * por una, este archivo normaliza los patrones repetidos dentro de .admin-shell.
+ *
+ * Va SIN @layer a propósito: en Tailwind v4 las utilidades viven en
+ * @layer utilities, y una regla sin capa les gana sin importar la
+ * especificidad. Por eso cada regla apunta a una clase concreta y nada más.
+ */
+
+.admin-shell {
+    --admin-bg: #f6f4f0;
+    --admin-surface: #ffffff;
+    --admin-border: #e8e3da;
+    --admin-border-strong: #d9d2c5;
+    --admin-muted: #6f6a5c;
+    --admin-ink: #1b1a18;
+    --admin-gold: #b8935f;
+    --admin-shadow: 0 1px 2px rgba(27, 26, 24, 0.04), 0 1px 3px rgba(27, 26, 24, 0.06);
+
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    color: var(--admin-ink);
+    background: var(--admin-bg);
+    font-feature-settings: "tnum" 1, "cv11" 1;
+}
+
+/* Títulos: sans, firmes y compactos. La serif decorativa de la web pública no
+   funciona en una interfaz de trabajo. */
+.admin-shell h1,
+.admin-shell h2,
+.admin-shell h3,
+.admin-shell h4,
+.admin-shell .font-serif {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    letter-spacing: -0.015em;
+}
+
+.admin-content h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 650;
+}
+
+.admin-content h2 {
+    font-weight: 600;
+}
+
+/* Fondos de página: unificados al tono del shell. */
+.admin-content .bg-gray-50:not(thead):not(tr):not(td) {
+    background-color: var(--admin-bg);
+}
+
+/* Superficies: un solo radio, un borde cálido y una sombra discreta. */
+.admin-content .rounded-2xl {
+    border-radius: 0.875rem;
+}
+
+.admin-content .shadow-xl,
+.admin-content .shadow-lg,
+.admin-content .shadow-md,
+.admin-content .shadow-sm {
+    box-shadow: var(--admin-shadow);
+}
+
+.admin-content .border-gray-100,
+.admin-content .border-gray-200 {
+    border-color: var(--admin-border);
+}
+
+.admin-content .divide-gray-50 > :not(:last-child),
+.admin-content .divide-gray-100 > :not(:last-child) {
+    border-color: #f0ece5;
+}
+
+/* Las tarjetas que crecían al pasar el mouse movían todo el layout. */
+.admin-content .hover\:scale-\[1\.02\]:hover,
+.admin-content .hover\:scale-105:hover {
+    transform: none;
+}
+
+/* Tablas: encabezado pegajoso, legible y consistente en todas las páginas. */
+.admin-content table thead {
+    background: #faf8f5;
+}
+
+.admin-content table thead th {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--admin-muted);
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-content table tbody tr {
+    transition: background-color 120ms ease;
+}
+
+.admin-content table tbody tr:hover {
+    background-color: #fbf9f6;
+}
+
+/* Campos de formulario. */
+.admin-content input[type="text"],
+.admin-content input[type="search"],
+.admin-content input[type="email"],
+.admin-content input[type="number"],
+.admin-content input[type="date"],
+.admin-content input[type="password"],
+.admin-content select,
+.admin-content textarea {
+    border-color: var(--admin-border-strong);
+    background-color: var(--admin-surface);
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.admin-content input:focus,
+.admin-content select:focus,
+.admin-content textarea:focus {
+    outline: none;
+    border-color: var(--admin-gold);
+    box-shadow: 0 0 0 3px rgba(184, 147, 95, 0.18);
+}
+
+/* Scroll horizontal de tablas: barra fina en vez de la del sistema. */
+.admin-content .overflow-x-auto {
+    scrollbar-width: thin;
+    scrollbar-color: var(--admin-border-strong) transparent;
+}
+
+@keyframes admin-fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+}
+
+.admin-content > * {
+    animation: admin-fade 220ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-content > * {
+        animation: none;
+    }
+}
+
+/* Pestañas de filtro: desplazables en pantallas chicas, sin barra visible. */
+.admin-content .admin-tabs {
+    scrollbar-width: none;
+}
+
+.admin-content .admin-tabs::-webkit-scrollbar {
+    display: none;
+}

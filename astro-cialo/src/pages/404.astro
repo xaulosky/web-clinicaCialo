@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NotFoundRoute from "../generated/routes/not-found.tsx";
+
+const metadata = {
+  title: "Página no encontrada | Clínica Cialo",
+  description: "La página que estás buscando no existe o fue movida.",
+  robots: "noindex, nofollow"
+};
+---
+
+<BaseLayout metadata={metadata} pathname={Astro.url.pathname}>
+  <NotFoundRoute client:load pathname={Astro.url.pathname} search={Astro.url.search} />
+</BaseLayout>

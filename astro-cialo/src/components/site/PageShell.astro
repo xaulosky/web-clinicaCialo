@@ -1,0 +1,16 @@
+---
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+
+interface Props {
+  pathname?: string;
+}
+
+const { pathname = "/" } = Astro.props as Props;
+---
+
+<div class="min-h-screen bg-white text-cialo-dark">
+  <SiteHeader pathname={pathname} />
+  <slot />
+  <SiteFooter />
+</div>

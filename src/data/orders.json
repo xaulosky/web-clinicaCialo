@@ -1,0 +1,36 @@
+[
+  {
+    "customer": {
+      "nombre": "Pablo",
+      "apellido": "Salas",
+      "email": "pascifuentes@gmail.com",
+      "telefono": "997750151",
+      "rut": "19.944.560-K",
+      "notas": ""
+    },
+    "items": [
+      {
+        "id": "191068",
+        "type": "producto",
+        "name": "Agua Termal 150 ml - Avene",
+        "price": 11000,
+        "slug": "avene-agua-termal-150-ml",
+        "categoria": "Dermocosmética",
+        "quantity": 2
+      }
+    ],
+    "subtotal": 22000,
+    "total": 22000,
+    "status": "PAGADO",
+    "paymentMethod": "webpay",
+    "id": "673bf840-10d6-47d7-857e-a1c89a39cddb",
+    "orderNumber": "CIALO-2026-0001",
+    "retiroCode": "7SEG5U",
+    "createdAt": "2026-01-08T07:31:14.591Z",
+    "updatedAt": "2026-01-08T07:31:45.368Z",
+    "transactionId": "01ab613ef58ef1ee0397d058f8e3bde9358240ee3efcb7c64faaf178483e2188",
+    "paidAt": "2026-01-08T07:31:45.368Z",
+    "authorizationCode": "1213",
+    "cardNumber": "6623"
+  }
+]

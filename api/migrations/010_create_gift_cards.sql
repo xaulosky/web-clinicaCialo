@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS gift_cards (
+    id VARCHAR(36) NOT NULL,
+    codigo VARCHAR(20) NOT NULL,
+    tipo ENUM('valor','tratamiento') NOT NULL,
+    monto INT NOT NULL DEFAULT 0,
+    tratamiento VARCHAR(150) NULL,
+    saldo INT NOT NULL DEFAULT 0,
+    estado ENUM('pendiente_pago','activa','canjeada','vencida','anulada') NOT NULL DEFAULT 'pendiente_pago',
+    order_id VARCHAR(36) NULL,
+    comprador_nombre VARCHAR(150) NULL,
+    comprador_email VARCHAR(150) NULL,
+    comprador_telefono VARCHAR(50) NULL,
+    destinatario VARCHAR(150) NULL,
+    mensaje TEXT NULL,
+    vencimiento DATE NULL,
+    redeemed_at DATETIME NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_codigo (codigo),
+    INDEX idx_estado (estado),
+    INDEX idx_order (order_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,212 @@
+@import "../../../app/globals.css";
+
+@source "../../../app";
+
+:root {
+  --font-italiana: ui-sans-serif, system-ui, sans-serif;
+  --font-poppins: ui-sans-serif, system-ui, sans-serif;
+  --font-comfortaa: ui-sans-serif, system-ui, sans-serif;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent {
+  background-color: rgb(255 255 255 / 0.98) !important;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+  backdrop-filter: blur(8px);
+}
+
+html[data-cialo-scrolled] nav.top-8,
+html[data-cialo-scrolled] nav[class*="top-8"] {
+  top: 0 !important;
+  background: rgb(255 255 255 / 0.98) !important;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+  backdrop-filter: blur(8px);
+}
+
+html[data-cialo-scrolled] nav[class*="bg-transparent"] {
+  background: rgb(255 255 255 / 0.98) !important;
+  color: #4f4f51 !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl img[class*="brightness-0"][class*="invert"] {
+  filter: none !important;
+}
+
+html[data-cialo-scrolled] nav[class*="bg-transparent"] img[alt="Clínica Cialo"] {
+  filter: none !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl [class*="text-white"] {
+  color: #4f4f51 !important;
+}
+
+html[data-cialo-scrolled] nav[class*="bg-transparent"] > .max-w-7xl :is(a, button, svg) {
+  color: #4f4f51 !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl [class*="text-white"]:hover {
+  color: #d4c1a0 !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl [class*="[&_svg]:text-white"] svg {
+  color: #4f4f51 !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl [class*="[&_span]:bg-white"] span {
+  background-color: #d4c1a0 !important;
+  color: #fff !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl [class*="[&_span]:bg-white"] span[class*="bg-green-500"] {
+  background-color: var(--color-green-500) !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl a[href="/evaluacion-tratamientos/"],
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl a[href="/evaluacion-tratamientos"] {
+  background-color: #d4c1a0 !important;
+  border-color: #d4c1a0 !important;
+  color: #fff !important;
+}
+
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl a[href="/evaluacion-tratamientos/"]:hover,
+html[data-cialo-scrolled] nav.bg-transparent > .max-w-7xl a[href="/evaluacion-tratamientos"]:hover {
+  background-color: #1d1d1d !important;
+  border-color: #1d1d1d !important;
+  color: #fff !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  nav [class~="lg:flex"] > a.relative::after {
+    bottom: -3px !important;
+    height: 1px !important;
+  }
+
+  nav [class~="lg:flex"] > .relative > .absolute.top-full {
+    pointer-events: none;
+  }
+
+  nav [class~="lg:flex"] > .relative::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 0.5rem;
+  }
+
+  nav [class~="lg:flex"] > .relative:hover > .absolute.top-full,
+  nav [class~="lg:flex"] > .relative:focus-within > .absolute.top-full {
+    --tw-translate-y: 0px !important;
+    opacity: 1 !important;
+    pointer-events: auto;
+    translate: 0 0 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+  }
+
+  nav [class~="lg:flex"] > .relative:hover > button svg,
+  nav [class~="lg:flex"] > .relative:focus-within > button svg {
+    transform: rotate(180deg);
+  }
+}
+
+.prose-cialo {
+  color: var(--color-cialo-gray);
+}
+
+.prose-cialo h2,
+.prose-cialo h3,
+.prose-cialo h4 {
+  color: var(--color-cialo-dark);
+  line-height: 1.15;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-cialo h2 {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+}
+
+.prose-cialo h3 {
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+}
+
+.prose-cialo h4 {
+  font-size: 1.15rem;
+}
+
+.prose-cialo p,
+.prose-cialo li {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.prose-cialo p + p,
+.prose-cialo p + .rich-list,
+.prose-cialo .rich-list + p,
+.prose-cialo .rich-table-wrap + p,
+.prose-cialo .rich-divider + p {
+  margin-top: 1rem;
+}
+
+.prose-cialo .rich-list {
+  margin: 1.5rem 0;
+  padding-left: 1.4rem;
+}
+
+.prose-cialo .rich-list-ul {
+  list-style: disc;
+}
+
+.prose-cialo .rich-list-ol {
+  list-style: decimal;
+}
+
+.prose-cialo .rich-link {
+  color: var(--color-cialo-gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.prose-cialo .rich-link:hover {
+  text-decoration: underline;
+}
+
+.prose-cialo .rich-divider {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid rgba(29, 29, 29, 0.12);
+}
+
+.prose-cialo .rich-table-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.prose-cialo .rich-table {
+  width: 100%;
+  min-width: 38rem;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(212, 193, 160, 0.16);
+  background: white;
+}
+
+.prose-cialo .rich-table th {
+  background: var(--color-cialo-dark);
+  color: white;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.prose-cialo .rich-table th,
+.prose-cialo .rich-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(29, 29, 29, 0.06);
+}

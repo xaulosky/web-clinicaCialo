@@ -3127,7 +3127,7 @@ export const tratamientoRequiereEvaluacion = (tratamiento: Tratamiento): boolean
 export const getConsultaEvaluacion = (tratamiento: Tratamiento): { nombre: string; url: string; precio: number } => {
     // Valores reales de cada consulta (ver consultas.ts). precio 0 = gratuita.
     const consultasPorCategoria: Record<string, { nombre: string; url: string; precio: number }> = {
-        'Facial': { nombre: 'Evaluación Estética Facial', url: '/consultas/evaluacion-estetica-facial', precio: 30000 },
+        'Facial': { nombre: 'Consulta Médica Estética Facial', url: '/consultas/evaluacion-estetica-facial', precio: 30000 },
         'Corporal': { nombre: 'Evaluación Corporal Integral', url: '/consultas/evaluacion-corporal', precio: 0 },
         'Capilar': { nombre: 'Consulta Tricológica', url: '/consultas/consulta-tricologia', precio: 40000 },
         'Ginecoestética': { nombre: 'Control Ginecológico con Matrona', url: '/consultas/consulta-matrona', precio: 30000 },

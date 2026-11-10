@@ -180,7 +180,7 @@ export const consultasData: Consulta[] = [
         id: 'evaluacion-estetica-facial',
         categoria: 'Medicina Estética Facial',
         iconPath: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
-        nombre: 'Evaluación Estética Facial',
+        nombre: 'Consulta Médica Estética Facial',
         descripcion: 'Evaluación avanzada del rostro con análisis clínico del envejecimiento y uso de tecnología Evelab Insight con IA. Se diseña un plan terapéutico no quirúrgico integral personalizado.',
         valor: 30000,
         valorTexto: '$30.000',

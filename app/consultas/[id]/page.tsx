@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ConsultaAddToCart from "../../components/ConsultaAddToCart";
 import { consultasData, getConsultaById } from "@/data/consultas";
-import { consultaSePagaAlReservar, urlReservaProfesional } from "@/lib/reservaClinios";
+import { consultaSePagaAlReservar, urlReservaConsulta } from "@/lib/reservaClinios";
 import ReservaClinios from "../../components/ReservaClinios";
 
 interface PageProps {
@@ -312,7 +312,7 @@ export default async function ConsultaPage({ params }: PageProps) {
                                         )}
                                     </div>
                                     <ReservaClinios
-                                        agendaUrl={consulta.id === "evaluacion-estetica-facial" ? urlReservaProfesional("nicolas-laucirica") : consulta.agendaUrl}
+                                        agendaUrl={consulta.id === "evaluacion-estetica-facial" ? urlReservaConsulta(consulta.id) : consulta.agendaUrl}
                                         title={`Agendar ${consulta.nombre}`}
                                     />
                                 </section>

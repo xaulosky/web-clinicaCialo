@@ -18,7 +18,7 @@ const links = [
     {
         titulo: "📅 Agendar Consulta",
         descripcion: "Reserva tu evaluación ginecológica",
-        url: "https://reservas.clinios.cl/cialo/reservar",
+        url: "https://reservas.clinios.cl/cialo/reservar/maria-laura-villarroel",
         destacado: true,
     },
     {

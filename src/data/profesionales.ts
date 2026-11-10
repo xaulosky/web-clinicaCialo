@@ -162,7 +162,7 @@ Clínica Cialo nace con la visión de consolidarse como un referente en medicina
         imagen: "/profesionales/clinica-cialo_Sorangel_Lugo.webp",
         // Agenda general de reservo (id de la Dra.: 112474). Como la agenda es
         // compartida, serviciosOnline acota qué servicios ofrece SU reserva propia.
-        agendaUrl: "https://reservas.clinios.cl/cialo/reservar",
+        agendaUrl: "https://reservas.clinios.cl/cialo/reservar/sorangel-lugo",
         reservoId: "112474",
         serviciosOnline: ["Consulta dermatológica"],
         agendaNotice: "Consulta de Dermatología y Tricología",
@@ -238,7 +238,7 @@ Es autora y coautora de múltiples trabajos y casos clínicos publicados en revi
         imagen: "/profesionales/clinica-cialo_Scarlet_Novoa.webp",
         // Agenda general de reservo (id de la Dra.: 104904). Como la agenda es
         // compartida, serviciosOnline acota su reserva a su propia evaluación.
-        agendaUrl: "https://reservas.clinios.cl/cialo/reservar",
+        agendaUrl: "https://reservas.clinios.cl/cialo/reservar/scarlet-novoa",
         reservoId: "104904",
         serviciosOnline: ["Evaluación maxilofacial Dra. Novoa"],
         agendaNotice: "Evaluación Maxilofacial",
@@ -343,7 +343,7 @@ Toda atención comienza con una evaluación maxilofacial integral: el análisis 
         imagen: "/profesionales/clinica-cialo_Analith_Cuba.webp",
         // Agenda general de reservo (id de la Dra.: 112478). Como la agenda es
         // compartida, serviciosOnline acota qué servicios ofrece SU reserva propia.
-        agendaUrl: "https://reservas.clinios.cl/cialo/reservar",
+        agendaUrl: "https://reservas.clinios.cl/cialo/reservar/analith-cuba",
         reservoId: "112478",
         serviciosOnline: ["Consulta Psiquiátrica Ingreso"],
         agendaNotice: "Consulta Psiquiátrica",
@@ -414,7 +414,7 @@ Su práctica clínica se sustenta en una evaluación integral e individualizada 
         subtitulo: "Ginecóloga y Obstetra | Especialista CONACEM",
         categoria: "Ginecología",
         imagen: "/profesionales/clinica-cialo_Maria_Laura_Villarroel.webp",
-        agendaUrl: "https://reservas.clinios.cl/cialo/reservar",
+        agendaUrl: "https://reservas.clinios.cl/cialo/reservar/maria-laura-villarroel",
         agendaNotice: "Consulta de Ginecología y Obstetricia",
         seo: {
             metaTitle: "Ginecólogo Los Ángeles: Dra. María Laura Villarroel | Clínica Cialo",
@@ -463,7 +463,7 @@ Su práctica clínica se sustenta en una evaluación integral e individualizada 
         subtitulo: "Nutricionista Dietista | Licenciada en Nutrición",
         categoria: "Nutrición",
         imagen: "/profesionales/clinica-cialo_Valentina_Verdejo.webp",
-        agendaUrl: "https://reservas.clinios.cl/cialo/reservar",
+        agendaUrl: "https://reservas.clinios.cl/cialo/reservar/valentina-verdejo",
         agendaNotice: "Evaluación Nutricional Integral",
         seo: {
             metaTitle: "Nutricionista Los Ángeles: Valentina Verdejo | Clínica Cialo",
@@ -794,7 +794,7 @@ Su práctica clínica se sustenta en una evaluación integral e individualizada 
         subtitulo: "Enfermera Universitaria | Especialista en Gestión Clínica y Estética Corporal",
         categoria: "Corporal",
         imagen: "/profesionales/clinica-cialo_Maria_Jesus_Contreras.webp",
-        agendaUrl: "https://reservas.clinios.cl/cialo/reservar",
+        agendaUrl: "https://reservas.clinios.cl/cialo/reservar/maria-jesus-contreras",
         serviciosOnline: ["Evaluación corporal integral"],
         agendaNotice: "Evaluación Corporal y Tratamientos Estéticos",
         perfil: "Enfermera con sólida vocación de servicio y experiencia en gestión clínica. Destaca por liderar equipos, optimizar procesos y asegurar el cumplimiento normativo, garantizando una atención segura y de calidad. Comprometida, proactiva y orientada a resultados, aporta liderazgo positivo y excelencia operativa para mejorar el desempeño de los equipos y el bienestar de los pacientes.",

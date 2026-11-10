@@ -99,42 +99,42 @@ export const getRecommendedConsultation = (answers: Record<string, string>): Con
             id: 'consulta-medica-integral',
             nombre: 'Consulta Médica Estética Integral',
             descripcion: 'Evaluación completa de piel, tejidos y proporciones con diseño de plan personalizado.',
-            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-medica-integral',
             urlInterna: '/consultas/consulta-medica-integral'
         },
         corporal: {
             id: 'evaluacion-corporal',
             nombre: 'Evaluación Corporal Integral',
             descripcion: 'Diagnóstico de adiposidad, flacidez, celulitis con tecnologías avanzadas.',
-            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/evaluacion-corporal',
             urlInterna: '/consultas/evaluacion-corporal'
         },
         capilar: {
             id: 'consulta-tricologia',
             nombre: 'Consulta Médica – Tricología',
             descripcion: 'Evaluación del cuero cabelludo con tricoscopio para diagnóstico de alopecias.',
-            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-tricologia',
             urlInterna: '/consultas/consulta-tricologia'
         },
         intimo_hombre: {
             id: 'consulta-urologia',
             nombre: 'Consulta Médica – Urología',
             descripcion: 'Evaluación urológica integral y salud sexual masculina.',
-            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-urologia',
             urlInterna: '/consultas/consulta-urologia'
         },
         intimo_mujer: {
             id: 'consulta-matrona',
             nombre: 'Control Ginecológico con Matrona',
             descripcion: 'Atención en salud sexual, anticonceptivos y ginecoestética.',
-            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-matrona',
             urlInterna: '/consultas/consulta-matrona'
         },
         intimo_piernas: {
             id: 'consulta-flebologia',
             nombre: 'Consulta Médica – Flebología',
             descripcion: 'Evaluación de patologías venosas con Ecografía Doppler.',
-            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar',
+            agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-flebologia',
             urlInterna: '/consultas/consulta-flebologia'
         }
     };

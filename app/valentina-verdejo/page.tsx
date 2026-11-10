@@ -18,7 +18,7 @@ const links = [
     {
         titulo: "📅 Agendar Consulta",
         descripcion: "Reserva tu evaluación nutricional integral",
-        url: "https://reservas.clinios.cl/cialo/reservar",
+        url: "https://reservas.clinios.cl/cialo/reservar/valentina-verdejo",
         destacado: true,
     },
     {

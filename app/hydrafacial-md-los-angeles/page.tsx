@@ -236,7 +236,7 @@ export default function HydraFacialMDPage() {
 
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     <a
-                                        href="https://reservas.clinios.cl/cialo/reservar"
+                                        href="https://reservas.clinios.cl/cialo/reservar/limpieza-hydrafacial"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center gap-2 bg-[#b8935f] text-[#1b1a18] px-8 py-4 font-bold uppercase tracking-wider hover:bg-white transition-colors shadow-lg"
@@ -367,7 +367,7 @@ export default function HydraFacialMDPage() {
                             Agenda tu sesión de HydraFacial y descubre por qué es el tratamiento facial más popular del mundo.
                         </p>
                         <a
-                            href="https://reservas.clinios.cl/cialo/reservar"
+                            href="https://reservas.clinios.cl/cialo/reservar/limpieza-hydrafacial"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 bg-[#1b1a18] text-white px-10 py-5 font-bold uppercase tracking-wider hover:bg-[#2a2a2a] transition-colors shadow-lg"

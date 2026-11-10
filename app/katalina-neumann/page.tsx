@@ -18,7 +18,7 @@ const links = [
     {
         titulo: "📅 Agendar Consulta",
         descripcion: "Reserva tu evaluación kinésica y estética",
-        url: "https://reservas.clinios.cl/cialo/reservar",
+        url: "https://reservas.clinios.cl/cialo/reservar/katalina-neumann",
         destacado: true,
     },
     {

@@ -50,7 +50,8 @@ const CONSULTAS: Readonly<Record<string, string>> = {
     // Varias prestaciones: la paciente elige en la categoría o en la agenda de la profesional.
     'evaluacion-nutricional': 'nutricion',
     'consulta-psicologia': 'fanny-cea-veloz',
-    'consulta-psiquiatria': 'analith-cuba',
+    // Psiquiatría la atiende más de una profesional: la categoría muestra a quien tenga horas.
+    'consulta-psiquiatria': 'psicologia-y-psiquiatria',
     // La evaluación estética facial se agenda con el Dr. Laucirica.
     'evaluacion-estetica-facial': 'nicolas-laucirica',
 };

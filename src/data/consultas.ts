@@ -532,7 +532,7 @@ export const consultasData: Consulta[] = [
         ],
         requisitos: 'Traer exámenes o informes previos si los tiene.',
         politicaCancelacion: 'Cancelar con mínimo 24 horas de anticipación.',
-        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/psicologia-y-psiquiatria',
+        agendaUrl: 'https://reservas.clinios.cl/cialo/reservar/consulta-psiquiatrica-ingreso',
         // La reserva online agenda siempre el bloque de ingreso (60 min)
         servicioReservo: 'Consulta Psiquiátrica Ingreso',
         seo: {

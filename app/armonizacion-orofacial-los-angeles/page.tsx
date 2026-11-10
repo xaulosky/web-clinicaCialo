@@ -372,7 +372,7 @@ export default function ArmonizacionOrofacialPage() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 bg-[#b8935f] text-[#1b1a18] px-8 py-4 font-semibold uppercase tracking-wider hover:bg-white transition-all"
                     >
-                        Agendar Evaluación Gratuita
+                        Agendar Evaluación
                     </a>
                     <p className="text-[#cbcfd1]/60 text-sm mt-6">📍 Bulnes 220, Of. 509, Los Ángeles, Chile</p>
                 </div>

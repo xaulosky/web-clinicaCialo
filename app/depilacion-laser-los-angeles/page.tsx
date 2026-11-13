@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from '@/app/components/GuiaTratamiento';
 
 export const metadata: Metadata = {
     title: { absolute: 'Depilación Láser en Los Ángeles | Clínica Cialo' },
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
         url: 'https://cialo.cl/depilacion-laser-los-angeles',
         images: [
             {
-                url: '/og-depilacion-laser.jpg',
+                url: '/tecnologias/Soprano-Titanium-cialo.png',
                 width: 1200,
                 height: 630,
                 alt: 'Depilación Láser Profesional en Los Ángeles',
@@ -36,7 +37,7 @@ const jsonLd = {
     description: 'Centro especializado en depilación láser definitiva en Los Ángeles, Chile',
     address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Calle Principal 123',
+        streetAddress: 'Bulnes 220, Of. 509',
         addressLocality: 'Los Ángeles',
         addressRegion: 'Biobío',
         addressCountry: 'CL',
@@ -49,7 +50,7 @@ const jsonLd = {
     url: 'https://cialo.cl/depilacion-laser-los-angeles',
     telephone: '+56982028473',
     priceRange: '$$',
-    openingHours: 'Mo-Fr 09:00-19:00, Sa 09:00-14:00',
+    openingHours: 'Mo-Fr 08:30-20:00, Sa 09:00-15:00',
     medicalSpecialty: 'Dermatology',
 };
 
@@ -106,6 +107,71 @@ const faqs = [
         pregunta: '¿Qué zonas del cuerpo se pueden tratar?',
         respuesta: 'Prácticamente cualquier zona: rostro, axilas, brazos, espalda, pecho, abdomen, rebaje, bikini completo, piernas y más. Consulta por paquetes especiales.',
     },
+    {
+        pregunta: '¿Cada cuánto son las sesiones?',
+        respuesta: 'En el cuerpo, cada 4 a 6 semanas; en el rostro, el vello crece más rápido y las sesiones suelen ser cada 4 semanas. Respetar los intervalos es clave, porque el láser solo actúa sobre el vello que está en fase de crecimiento.',
+    },
+    {
+        pregunta: '¿Funciona en piel morena o bronceada?',
+        respuesta: 'Sí. El Soprano Titanium combina tres longitudes de onda y trabaja en todos los fototipos, de la piel más clara a la más oscura. Igual se recomienda no tomar sol las semanas previas para ajustar bien los parámetros.',
+    },
+    {
+        pregunta: '¿Sirve para vello rubio, canoso o pelirrojo?',
+        respuesta: 'El láser actúa sobre el pigmento del pelo, por lo que el vello muy claro, canoso o pelirrojo responde poco o nada. En la evaluación revisamos tu tipo de vello y te decimos con honestidad qué resultado esperar.',
+    },
+    {
+        pregunta: '¿La depilación láser es para hombres también?',
+        respuesta: 'Sí. Los hombres suelen tratar espalda, pecho, abdomen, hombros, nuca y la zona de la barba para evitar vellos encarnados. El protocolo es el mismo y las sesiones se ajustan a un vello más grueso.',
+    },
+];
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: '¿Cuánto cuesta la depilación láser en Los Ángeles?',
+        parrafos: [
+            'El valor depende de la zona: las áreas pequeñas, como rostro o axilas, son las más económicas, y las grandes, como piernas completas o espalda, las de mayor valor. Arriba encuentras el precio desde por zona.',
+            'Como el tratamiento requiere varias sesiones, lo más conveniente suele ser un pack por zona o combinar varias zonas. En la evaluación gratuita te armamos un plan con el número de sesiones y el valor total, que puedes pagar en hasta 12 cuotas.',
+        ],
+    },
+    {
+        titulo: '¿Cuántas sesiones de depilación láser necesito?',
+        parrafos: [
+            'La mayoría de las personas necesita entre 6 y 8 sesiones para lograr una reducción del vello de largo plazo. El pelo crece en ciclos y el láser solo elimina el que está en fase de crecimiento en el momento de la sesión, por eso hay que repetir hasta alcanzar todos los folículos.',
+            'Influyen la zona, el grosor y color del vello y factores hormonales. Zonas con influencia hormonal, como el rostro femenino, pueden necesitar más sesiones y alguna mantención ocasional.',
+        ],
+    },
+    {
+        titulo: '¿La depilación láser es definitiva?',
+        parrafos: [
+            'Lo correcto es hablar de reducción permanente: después del tratamiento completo desaparece la gran mayoría del vello, y el que queda suele ser más fino y claro. Con cambios hormonales, como embarazo o menopausia, puede aparecer vello nuevo que se trata con una sesión de mantención.',
+        ],
+    },
+    {
+        titulo: 'Cuidados antes y después de cada sesión',
+        parrafos: [
+            'Seguir estas indicaciones mejora el resultado y evita irritaciones o manchas en la piel.',
+        ],
+        lista: [
+            'Rasura la zona con máquina 24 horas antes de la sesión; no uses cera, pinzas ni depiladora eléctrica durante el tratamiento.',
+            'Evita el sol y el autobronceante dos semanas antes y después de cada sesión.',
+            'No uses cremas exfoliantes, retinoides ni perfumes en la zona los días previos.',
+            'Después de la sesión usa protector solar y evita saunas, piscinas y ejercicio intenso por 48 horas.',
+            'Es normal un enrojecimiento leve las primeras horas; desaparece solo.',
+        ],
+    },
+    {
+        titulo: '¿Quién realiza la depilación láser en Clínica Cialo?',
+        parrafos: [
+            'El tratamiento lo realizan profesionales de la salud capacitadas en el equipo Soprano Titanium: las kinesiólogas Keren Matus y Katalina Neumann y la enfermera María Jesús Contreras. Antes de la primera sesión evalúan tu fototipo y tu tipo de vello para ajustar los parámetros del láser a tu piel.',
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: 'Soprano Titanium', href: '/soprano-titanium-los-angeles/', descripcion: 'Conoce el equipo de depilación láser que usamos.' },
+    { titulo: 'Ficha de depilación láser', href: '/tratamientos/depilacion-laser/', descripcion: 'Valores por zona y planes de sesiones.' },
+    { titulo: 'Láser avanzado', href: '/laser-avanzado-en-los-angeles/', descripcion: 'Otros tratamientos láser para la piel.' },
+    { titulo: 'Tratamientos corporales', href: '/corporal-contorno-los-angeles/', descripcion: 'Contorno, firmeza y reducción de grasa localizada.' },
 ];
 
 const faqJsonLd = {
@@ -396,6 +462,14 @@ export default function DepilacionLaserPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* Guía de contenido largo */}
+                <GuiaTratamiento
+                    titulo="Guía de la depilación láser en Los Ángeles"
+                    intro="Precio, número de sesiones, resultados y cuidados: lo que necesitas saber antes de empezar."
+                    secciones={guia}
+                    relacionados={relacionados}
+                />
 
                 {/* FAQs */}
                 <section className="py-20 bg-white">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 export const metadata: Metadata = {
     title: { absolute: "Toxina Botulínica en Tercio Superior Los Ángeles | Clínica Cialo" },
@@ -66,52 +67,108 @@ const jsonLd = {
     }
 };
 
+const faqs = [
+    {
+        pregunta: "¿Cuánto dura el efecto de la toxina botulínica?",
+        respuesta: "Los resultados se mantienen entre 3 y 6 meses. La duración exacta depende del metabolismo de cada paciente, la gesticulación y la fuerza muscular. En Clínica Cialo realizamos un seguimiento para optimizar tus tiempos de retoque y mantener el resultado.",
+    },
+    {
+        pregunta: "¿Cuánto cuesta la toxina botulínica en Los Ángeles?",
+        respuesta: "En Clínica Cialo el tratamiento de tercio superior (frente, entrecejo y patas de gallo) tiene un valor de $210.000 e incluye la evaluación médica y el control a los 15 días. El tratamiento full face tiene un valor de $329.000. Puedes pagar en hasta 12 cuotas.",
+    },
+    {
+        pregunta: "¿Es seguro el tratamiento con Botox?",
+        respuesta: "Sí, es uno de los procedimientos estéticos más seguros del mundo cuando es realizado por profesionales médicos capacitados. Utilizamos productos certificados por el ISP y seguimos protocolos estrictos de asepsia y anatomía.",
+    },
+    {
+        pregunta: "¿Cuándo veré los resultados?",
+        respuesta: "El efecto comienza a notarse sutilmente a los 3-4 días, pero el resultado final se aprecia a los 14 días. Por eso citamos a un control a las 2 semanas, para verificar la simetría y realizar ajustes si fuese necesario.",
+    },
+    {
+        pregunta: "¿El procedimiento es doloroso?",
+        respuesta: "Es mínimamente invasivo y prácticamente indoloro. Utilizamos agujas ultra finas y técnicas precisas para asegurar el confort del paciente. La sesión dura aproximadamente 20 minutos.",
+    },
+    {
+        pregunta: "¿Quedaré con la cara sin expresión?",
+        respuesta: "No. Nuestro enfoque médico busca resultados naturales. Atenuamos las arrugas preservando la capacidad de expresión facial, evitando el efecto de cara congelada.",
+    },
+    {
+        pregunta: "¿Qué cuidados debo tener después de la aplicación?",
+        respuesta: "Evitar acostarse o agachar la cabeza durante las primeras 4 horas, no realizar ejercicio intenso por 24 horas y no masajear la zona tratada. También se recomienda evitar saunas o calor extremo el primer día.",
+    },
+    {
+        pregunta: "¿A qué edad se recomienda empezar?",
+        respuesta: "No hay una edad fija, pero el Baby Botox o tratamiento preventivo puede iniciarse desde los 25-30 años, cuando comienzan a marcarse las primeras líneas de expresión dinámicas, evitando que se conviertan en arrugas estáticas permanentes.",
+    },
+    {
+        pregunta: "¿Qué diferencia hay entre toxina botulínica y ácido hialurónico?",
+        respuesta: "La toxina relaja el músculo y suaviza las arrugas que aparecen al gesticular. El ácido hialurónico es un relleno que aporta volumen o hidratación, por ejemplo en labios, ojeras o surcos. Muchas veces se combinan, pero tratan problemas distintos.",
+    },
+    {
+        pregunta: "¿Sirve para el bruxismo o la sudoración excesiva?",
+        respuesta: "Sí. La toxina botulínica también tiene usos terapéuticos: relaja el músculo masetero en el bruxismo y reduce la sudoración en axilas, manos o pies en la hiperhidrosis. Son tratamientos distintos al estético y se evalúan por separado.",
+    },
+];
+
 const jsonLdFAQ = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-        {
-            "@type": "Question",
-            "name": "¿Cómo actúa la Toxina Botulínica en el rostro?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La toxina botulínica bloquea temporalmente las señales nerviosas que provocan la contracción muscular. Al relajar músculos específicos como el frontal o los corrugadores, la piel se alisa y las arrugas dinámicas desaparecen, previniendo que se marquen permanentemente."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "¿Cuánto dura el efecto del tratamiento?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Los resultados son óptimos entre 3 a 6 meses, dependiendo del metabolismo de cada paciente y la fuerza de su musculatura. Recomendamos controles periódicos en nuestra clínica en Los Ángeles para mantener el efecto rejuvenecedor."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "¿El procedimiento es doloroso?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Es mínimamente invasivo y prácticamente indoloro. Utilizamos agujas ultra finas y técnicas precisas para asegurar el confort del paciente. La sesión dura aproximadamente 20 minutos."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "¿Quedaré con la cara sin expresión?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. Nuestro enfoque médico busca resultados naturales. Atenuamos las arrugas preservando la capacidad de expresión facial, evitando el efecto de 'cara congelada'."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "¿Qué cuidados debo tener después de la aplicación?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Evitar acostarse o agachar la cabeza durante las primeras 4 horas, no realizar ejercicio intenso por 24 horas y no masajear la zona tratada. También se recomienda evitar saunas o calor extremo el primer día."
-            }
-        }
-    ]
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: faq.respuesta },
+    })),
 };
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Cuánto cuesta la toxina botulínica en Los Ángeles?",
+        parrafos: [
+            "En Clínica Cialo el tratamiento del tercio superior —frente, entrecejo y patas de gallo— tiene un valor de $210.000. Incluye la evaluación médica inicial, la aplicación con insumos sellados y certificados por el ISP, y un control a los 15 días para revisar la simetría y hacer ajustes si hacen falta.",
+            "Si quieres tratar más zonas, el tratamiento full face tiene un valor de $329.000. El precio final se confirma en la evaluación, porque depende de la cantidad de unidades que necesita tu musculatura. Puedes pagar en hasta 12 cuotas.",
+        ],
+    },
+    {
+        titulo: "¿Cada cuánto hay que repetir el Botox?",
+        parrafos: [
+            "El efecto se mantiene entre tres y seis meses. Con el tiempo el músculo recupera su fuerza de a poco, por lo que el resultado no desaparece de golpe sino que se va atenuando.",
+            "Lo habitual es repetir la aplicación dos o tres veces al año. Con tratamientos sostenidos el músculo tiende a debilitarse y en muchos pacientes el efecto dura cada vez más, lo que permite espaciar las sesiones.",
+        ],
+    },
+    {
+        titulo: "Toxina botulínica preventiva o Baby Botox",
+        parrafos: [
+            "Las arrugas de la frente y el entrecejo empiezan como líneas dinámicas, que solo se ven al gesticular. Con los años la piel se pliega siempre en el mismo lugar y esas líneas quedan marcadas incluso en reposo.",
+            "La toxina en dosis bajas, aplicada desde los 25 o 30 años, relaja esa musculatura antes de que se formen surcos permanentes. Es una forma de prevención con resultados muy naturales, ideal para quienes recién notan las primeras líneas.",
+        ],
+    },
+    {
+        titulo: "Qué hacer antes de tu sesión",
+        parrafos: [
+            "Para reducir el riesgo de moretones conviene evitar el alcohol, la aspirina y los antiinflamatorios durante los dos o tres días previos, salvo que un médico te los haya indicado. Si tienes un evento importante, agenda con al menos dos semanas de anticipación para llegar con el resultado final.",
+        ],
+        lista: [
+            "Cuéntale al médico si estás embarazada, amamantando o tienes alguna enfermedad neuromuscular.",
+            "Avisa si te aplicaste toxina u otro inyectable en los últimos meses.",
+            "Llega sin maquillaje en la zona a tratar.",
+        ],
+    },
+    {
+        titulo: "¿Quién aplica la toxina botulínica en Clínica Cialo?",
+        parrafos: [
+            "La toxina botulínica es un medicamento y en Clínica Cialo la aplican exclusivamente médicos: el Dr. Nicolás Laucirica, la Dra. Mariane Kiss, la Dra. Elga Viviana Peña y la Dra. Mauriluz Atencio. Cada aplicación parte con una evaluación de tu anatomía y de cómo gesticulas, para definir los puntos y las dosis.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Toxina botulínica full face", href: "/tratamientos/toxina-full-face/", descripcion: "Tercio superior más zonas del tercio medio e inferior." },
+    { titulo: "Toxina para bruxismo", href: "/tratamientos/toxina-bruxismo/", descripcion: "Relaja el masetero y alivia el apretamiento dental." },
+    { titulo: "Toxina para hiperhidrosis", href: "/tratamientos/toxina-hiperhidrosis/", descripcion: "Reduce la sudoración excesiva en axilas, manos o pies." },
+    { titulo: "Relleno de labios", href: "/relleno-labios-los-angeles/", descripcion: "Ácido hialurónico para volumen, definición e hidratación." },
+    { titulo: "Relleno de ojeras", href: "/relleno-ojeras-los-angeles/", descripcion: "Atenúa el surco y el aspecto cansado de la mirada." },
+    { titulo: "Estética facial", href: "/estetica-facial-en-los-angeles/", descripcion: "Todos los tratamientos faciales de la clínica." },
+];
 
 export default function ToxinaTercioSuperiorPage() {
     return (
@@ -410,6 +467,14 @@ export default function ToxinaTercioSuperiorPage() {
                 </div>
             </section>
 
+            {/* Guía de contenido largo */}
+            <GuiaTratamiento
+                titulo="Guía de la toxina botulínica en Los Ángeles"
+                intro="Precio, frecuencia, prevención y cuidados: lo que más nos preguntan antes de la primera aplicación."
+                secciones={guia}
+                relacionados={relacionados}
+            />
+
             {/* FAQ Section */}
             <section className="py-24 bg-white">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -417,53 +482,17 @@ export default function ToxinaTercioSuperiorPage() {
                         Preguntas Frecuentes
                     </h2>
                     <div className="space-y-4">
-                        <details className="group bg-gray-50 p-6 rounded-lg cursor-pointer">
-                            <summary className="flex justify-between items-center font-medium text-[#1b1a18] list-none">
-                                ¿Cuánto dura el efecto de la toxina botulínica?
-                                <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
-                            </summary>
-                            <p className="text-[#6f6a5c] mt-4 text-sm leading-relaxed">
-                                Los resultados son visibles entre 3 a 6 meses. La duración exacta depende del metabolismo de cada paciente, la gesticulación y la fuerza muscular. En Clínica Cialo realizamos un seguimiento para optimizar tus tiempos de retoque y mantener el resultado.
-                            </p>
-                        </details>
-
-                        <details className="group bg-gray-50 p-6 rounded-lg cursor-pointer">
-                            <summary className="flex justify-between items-center font-medium text-[#1b1a18] list-none">
-                                ¿Es seguro el tratamiento con Botox?
-                                <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
-                            </summary>
-                            <p className="text-[#6f6a5c] mt-4 text-sm leading-relaxed">
-                                Sí, es uno de los procedimientos estéticos más seguros del mundo cuando es realizado por profesionales médicos capacitados. Utilizamos productos certificados por el ISP y seguimos protocolos estrictos de asepsia y anatomía.
-                            </p>
-                        </details>
-
-                        <details className="group bg-gray-50 p-6 rounded-lg cursor-pointer">
-                            <summary className="flex justify-between items-center font-medium text-[#1b1a18] list-none">
-                                ¿Cuándo veré los resultados?
-                                <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
-                            </summary>
-                            <p className="text-[#6f6a5c] mt-4 text-sm leading-relaxed">
-                                El efecto comienza a notarse sutilmente a los 3-4 días, pero el resultado final se aprecia a los 14 días. Por eso citamos a un control a las 2 semanas, para verificar la simetría y realizar ajustes si fuese necesario.
-                            </p>
-                        </details>
-
-                        <details className="group bg-gray-50 p-6 rounded-lg cursor-pointer">
-                            <summary className="flex justify-between items-center font-medium text-[#1b1a18] list-none">
-                                ¿A qué edad se recomienda empezar?
-                                <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
-                            </summary>
-                            <p className="text-[#6f6a5c] mt-4 text-sm leading-relaxed">
-                                No hay una edad fija, pero el "Baby Botox" o tratamiento preventivo puede iniciarse desde los 25-30 años, cuando comienzan a marcarse las primeras líneas de expresión dinámicas, evitando que se conviertan en arrugas estáticas permanentes.
-                            </p>
-                        </details>
+                        {faqs.map((faq) => (
+                            <details key={faq.pregunta} className="group bg-gray-50 p-6 rounded-lg cursor-pointer">
+                                <summary className="flex justify-between items-center font-medium text-[#1b1a18] list-none">
+                                    {faq.pregunta}
+                                    <span className="transition group-open:rotate-180">
+                                        <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                    </span>
+                                </summary>
+                                <p className="text-[#6f6a5c] mt-4 text-sm leading-relaxed">{faq.respuesta}</p>
+                            </details>
+                        ))}
                     </div>
                 </div>
             </section>

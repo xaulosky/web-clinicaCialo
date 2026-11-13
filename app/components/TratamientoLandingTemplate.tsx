@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 // Tipos para el componente
 interface FAQ {
@@ -57,6 +58,8 @@ interface TratamientoData {
     cuidadosPosteriores?: string[];
     especialista?: Especialista;
     galeria?: { titulo?: string; subtitulo?: string; imagenes: string[] };
+    guia?: { titulo: string; intro?: string; secciones: SeccionGuia[] };
+    relacionados?: TratamientoRelacionado[];
     faqs?: FAQ[];
 
     // CTA
@@ -78,12 +81,32 @@ export default function TratamientoLandingTemplate({
     jsonLd,
     heroAfter
 }: TratamientoLandingTemplateProps) {
+    // Schema de preguntas frecuentes a partir de las mismas FAQs que se muestran,
+    // salvo que la página ya lo traiga en su propio jsonLd.
+    const faqJsonLd = data.faqs?.length && !JSON.stringify(jsonLd ?? {}).includes('"FAQPage"')
+        ? {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: data.faqs.map((f) => ({
+                "@type": "Question",
+                name: f.pregunta,
+                acceptedAnswer: { "@type": "Answer", text: f.respuesta },
+            })),
+        }
+        : null;
+
     return (
         <>
             {jsonLd && (
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
+            )}
+            {faqJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
                 />
             )}
             <Navbar transparent />
@@ -358,6 +381,16 @@ export default function TratamientoLandingTemplate({
                             </div>
                         </div>
                     </section>
+                )}
+
+                {/* Guía de contenido largo + tratamientos relacionados */}
+                {data.guia && (
+                    <GuiaTratamiento
+                        titulo={data.guia.titulo}
+                        intro={data.guia.intro}
+                        secciones={data.guia.secciones}
+                        relacionados={data.relacionados}
+                    />
                 )}
 
                 {/* FAQs */}

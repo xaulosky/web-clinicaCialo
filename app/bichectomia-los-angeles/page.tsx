@@ -126,6 +126,66 @@ const data = {
         especialidad: "Cirujano Maxilofacial",
         link: "/consultas/evaluacion-maxilofacial",
     },
+    guia: {
+        titulo: "Todo lo que debes saber sobre la bichectomía",
+        intro:
+            "La bichectomía es una de las cirugías faciales más consultadas, pero no es para todos los rostros. Aquí te explicamos qué es, quién es buen candidato, cómo es la recuperación y qué resultado puedes esperar.",
+        secciones: [
+            {
+                titulo: "¿Qué es la bichectomía y qué son las bolsas de Bichat?",
+                parrafos: [
+                    "Las bolsas de Bichat son dos acúmulos de grasa que se ubican en la zona media de las mejillas, por debajo del pómulo. Su tamaño depende de la genética y no cambia mucho al bajar de peso, por eso hay personas delgadas que mantienen un rostro redondeado.",
+                    "La bichectomía es una cirugía menor que retira parcialmente esa grasa a través de una pequeña incisión dentro de la boca. El objetivo no es adelgazar la cara, sino afinar el tercio medio y dar más definición a los pómulos y a la línea de la mandíbula.",
+                ],
+            },
+            {
+                titulo: "¿Quién es buen candidato para una bichectomía?",
+                parrafos: [
+                    "El mejor resultado se logra en personas jóvenes o adultas con mejillas voluminosas por grasa (no por músculo ni por estructura ósea) y con buena elasticidad de la piel. Por eso la evaluación con el cirujano maxilofacial es indispensable antes de decidir.",
+                    "En la consulta se analiza la proporción del rostro, el grosor de los tejidos, la mordida y la musculatura masticatoria. Si el volumen se debe a un músculo masetero aumentado o a la forma del hueso, la bichectomía no es la solución y se proponen otras alternativas.",
+                ],
+                lista: [
+                    "Mejillas redondeadas que no cambian con la baja de peso.",
+                    "Piel firme, sin flacidez marcada.",
+                    "Expectativa de un cambio sutil y armónico.",
+                    "Buena salud general y bucal.",
+                ],
+            },
+            {
+                titulo: "¿Cómo es la cirugía paso a paso?",
+                parrafos: [
+                    "Es un procedimiento ambulatorio que dura entre 30 y 45 minutos. Se realiza con anestesia local y, si corresponde, sedación, por lo que no se siente dolor durante la intervención y el paciente vuelve a su casa el mismo día.",
+                    "El cirujano hace una incisión de alrededor de un centímetro en la mucosa interna de cada mejilla, extrae la cantidad de grasa planificada y cierra con puntos reabsorbibles. Como la incisión queda dentro de la boca, no hay cicatrices visibles en la cara.",
+                ],
+            },
+            {
+                titulo: "Recuperación después de la bichectomía",
+                parrafos: [
+                    "Los primeros tres a cinco días son los de mayor hinchazón y molestia al abrir la boca o masticar. La mayoría de las personas vuelve a trabajar o estudiar entre el quinto y el séptimo día, dependiendo de su actividad.",
+                    "Durante la recuperación se indica dieta blanda, enjuagues bucales, analgésicos y evitar el ejercicio intenso por una semana. La inflamación baja de forma notoria entre la segunda y la cuarta semana, y el resultado definitivo se aprecia entre los dos y tres meses.",
+                ],
+            },
+            {
+                titulo: "Riesgos y por qué el criterio conservador es clave",
+                parrafos: [
+                    "Como toda cirugía, puede tener complicaciones poco frecuentes: hematoma, infección o asimetría. El riesgo más relevante a largo plazo es retirar demasiada grasa, porque con la edad el rostro pierde volumen de forma natural y una extracción excesiva puede dar un aspecto hundido o envejecido.",
+                    "Por eso en Clínica Cialo la planificación es conservadora: se retira solo la porción necesaria para afinar el tercio medio y mantener un resultado natural en el tiempo.",
+                ],
+            },
+            {
+                titulo: "¿Cuánto cuesta una bichectomía en Los Ángeles?",
+                parrafos: [
+                    "El valor se define en la evaluación con el Dr. Luis Pérez Lagos, porque depende de si la bichectomía se realiza sola o combinada con otro procedimiento, del tipo de anestesia y de los controles incluidos. En la consulta recibes un presupuesto cerrado y puedes pagar en hasta 12 cuotas.",
+                ],
+            },
+        ],
+    },
+    relacionados: [
+        { titulo: "Mentoplastía", href: "/mentoplastia-los-angeles/", descripcion: "Proyecta el mentón y equilibra el perfil; se combina a menudo con bichectomía." },
+        { titulo: "Lipoaspiración facial y cervical", href: "/lipoaspiracion-facial-cervical-los-angeles/", descripcion: "Define la papada y el ángulo de la mandíbula." },
+        { titulo: "Armonización orofacial", href: "/armonizacion-orofacial-los-angeles/", descripcion: "Mejora proporciones con procedimientos sin cirugía." },
+        { titulo: "Cirugía estética facial", href: "/cirugia-estetica-en-los-angeles/", descripcion: "Todas las cirugías faciales ambulatorias de la clínica." },
+    ],
     faqs: [
         {
             pregunta: "¿La bichectomía adelgaza el rostro?",
@@ -142,6 +202,22 @@ const data = {
         {
             pregunta: "¿Cuándo se ve el resultado final?",
             respuesta: "La hinchazón disminuye notablemente a las 2-4 semanas, pero el resultado definitivo se aprecia entre 2 y 3 meses.",
+        },
+        {
+            pregunta: "¿La bichectomía duele?",
+            respuesta: "Durante la cirugía no, porque se realiza con anestesia local y sedación si corresponde. Después hay molestia moderada al masticar y abrir la boca los primeros días, que se controla con analgésicos.",
+        },
+        {
+            pregunta: "¿Cuántos días de reposo necesito?",
+            respuesta: "La mayoría de los pacientes retoma el trabajo o los estudios entre el quinto y el séptimo día. El ejercicio intenso se reanuda después de una semana, según la indicación del cirujano.",
+        },
+        {
+            pregunta: "¿Deja cicatriz?",
+            respuesta: "No hay cicatrices visibles: la incisión se hace dentro de la boca y se cierra con puntos reabsorbibles.",
+        },
+        {
+            pregunta: "¿Desde qué edad se puede hacer?",
+            respuesta: "Se recomienda en adultos, cuando el crecimiento facial ya terminó. La decisión depende más de la anatomía y de las expectativas que de la edad, y se define en la evaluación.",
         },
     ],
     ctaTitulo: "Agenda tu evaluación para Bichectomía",

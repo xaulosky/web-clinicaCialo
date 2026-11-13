@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 export const metadata: Metadata = {
     title: { absolute: "Relleno de Labios en Los Ángeles Chile | Clínica Cialo" },
@@ -53,27 +54,6 @@ const jsonLd = {
                 },
                 telephone: "+56 9 8202 8473"
             }
-        },
-        {
-            "@type": "FAQPage",
-            mainEntity: [
-                {
-                    "@type": "Question",
-                    name: "¿Cuánto dura el relleno de labios?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "El relleno de labios con ácido hialurónico dura entre 6 y 12 meses, dependiendo del tipo de producto, la técnica utilizada y el metabolismo de cada persona."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿El relleno de labios duele?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Se aplica anestesia tópica antes del procedimiento, por lo que las molestias son mínimas. La mayoría de productos ya contienen lidocaína para mayor comodidad."
-                    }
-                }
-            ]
         }
     ]
 };
@@ -142,7 +122,75 @@ const faqs = [
     {
         pregunta: "¿Quién realiza el procedimiento?",
         respuesta: "El relleno de labios en Clínica Cialo es realizado por el Dr. Nicolás Laucirica, médico cirujano especializado en medicina estética facial con formación en anatomía facial en Harvard University."
+    },
+    {
+        pregunta: "¿Cuánto cuesta el relleno de labios en Los Ángeles?",
+        respuesta: "En Clínica Cialo el relleno de labios con ácido hialurónico tiene un valor entre $180.000 y $240.000, según la cantidad de producto y la técnica. El valor exacto se define en la evaluación y puedes pagar en hasta 12 cuotas."
+    },
+    {
+        pregunta: "¿Cada cuánto hay que retocar el relleno?",
+        respuesta: "Como el ácido hialurónico se reabsorbe de forma gradual, la mayoría de las pacientes hace un retoque cada 8 a 12 meses. Al mantenerlo en el tiempo, muchas veces se necesita menos producto en cada sesión."
     }
+];
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: faq.respuesta },
+    })),
+};
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Cuánto cuesta el relleno de labios con ácido hialurónico?",
+        parrafos: [
+            "En Clínica Cialo el valor está entre $180.000 y $240.000. La diferencia depende principalmente de la cantidad de ácido hialurónico (media jeringa o una jeringa completa) y de la técnica que se usa según tu objetivo: perfilado, volumen o hidratación.",
+            "En la evaluación médica recibes el presupuesto exacto antes de decidir, y puedes pagar en hasta 12 cuotas.",
+        ],
+    },
+    {
+        titulo: "¿Cuánto ácido hialurónico se necesita? Media jeringa o 1 ml",
+        parrafos: [
+            "Para una primera vez con un objetivo sutil, entre 0,5 y 1 ml suele ser suficiente. Labios muy finos o que buscan un cambio más notorio pueden necesitar más producto, idealmente repartido en dos sesiones para que los tejidos se adapten y el resultado sea natural.",
+            "Más producto no significa mejor resultado. Un buen relleno respeta la proporción entre el labio superior y el inferior y la armonía con el resto del rostro.",
+        ],
+    },
+    {
+        titulo: "Cuidados antes y después del relleno de labios",
+        parrafos: [
+            "La hinchazón de los primeros días es normal y no representa el resultado final. Estas indicaciones ayudan a que el producto se asiente bien y a reducir los hematomas.",
+        ],
+        lista: [
+            "Evita alcohol, aspirina y antiinflamatorios dos días antes, salvo indicación médica.",
+            "Si tienes herpes labial recurrente, avísale al médico: puede indicarte un tratamiento preventivo.",
+            "Las primeras 24 horas no presiones ni masajees los labios y evita el maquillaje en la zona.",
+            "No hagas ejercicio intenso, sauna ni exposición al sol fuerte por 48 horas.",
+            "Puedes aplicar frío envuelto en un paño si hay hinchazón.",
+        ],
+    },
+    {
+        titulo: "¿Quién no debería hacerse un relleno de labios?",
+        parrafos: [
+            "El tratamiento no se recomienda durante el embarazo o la lactancia, con infecciones activas o herpes en la zona, ni en personas con alergia conocida a alguno de los componentes. Las enfermedades autoinmunes o el uso de anticoagulantes no siempre lo impiden, pero requieren una evaluación más cuidadosa.",
+        ],
+    },
+    {
+        titulo: "Cómo lograr labios naturales y evitar el exceso",
+        parrafos: [
+            "Los resultados poco naturales suelen deberse a demasiado producto en una sola sesión o a técnicas que no consideran la anatomía. En Clínica Cialo trabajamos de forma progresiva: es preferible quedarse algo corto en la primera sesión y completar en el control que sobrecorregir.",
+            "Y si el resultado no te gusta, el ácido hialurónico es reversible: se puede disolver con una enzima llamada hialuronidasa.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Toxina botulínica", href: "/toxina-botulinica-tercio-superior-los-angeles/", descripcion: "Suaviza arrugas de frente, entrecejo y patas de gallo." },
+    { titulo: "Relleno de ojeras", href: "/relleno-ojeras-los-angeles/", descripcion: "Ácido hialurónico para el surco y la mirada cansada." },
+    { titulo: "Rinomodelación", href: "/rinomodelacion-los-angeles/", descripcion: "Corrige el perfil de la nariz sin cirugía." },
+    { titulo: "Estética facial", href: "/estetica-facial-en-los-angeles/", descripcion: "Todos los tratamientos faciales de la clínica." },
 ];
 
 export default function RellenoLabiosPage() {
@@ -151,6 +199,10 @@ export default function RellenoLabiosPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
             <Navbar transparent />
 
@@ -315,6 +367,14 @@ export default function RellenoLabiosPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* Guía de contenido largo */}
+                <GuiaTratamiento
+                    titulo="Guía del relleno de labios en Los Ángeles"
+                    intro="Precio, cantidad de producto, cuidados y cómo lograr un resultado natural."
+                    secciones={guia}
+                    relacionados={relacionados}
+                />
 
                 {/* FAQs */}
                 <section className="py-20 bg-white">

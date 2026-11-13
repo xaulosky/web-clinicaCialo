@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 export const metadata: Metadata = {
     title: { absolute: "Morpheus8 en Los Ángeles Chile | Clínica Cialo" },
@@ -63,35 +64,6 @@ const jsonLd = {
                 },
                 telephone: "+56 9 8202 8473"
             }
-        },
-        {
-            "@type": "FAQPage",
-            mainEntity: [
-                {
-                    "@type": "Question",
-                    name: "¿Qué es Morpheus8?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Morpheus8 es un tratamiento de radiofrecuencia fraccionada con microagujas que penetra hasta 8mm en la piel para estimular la producción de colágeno, tensar tejidos y remodelar grasa."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿Duele el tratamiento con Morpheus8?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Se aplica crema anestésica antes del procedimiento, por lo que las molestias son mínimas. La mayoría de pacientes describe una sensación de calor y leve presión."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿Cuántas sesiones de Morpheus8 necesito?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Generalmente se recomiendan 1-3 sesiones espaciadas cada 4-6 semanas, dependiendo del objetivo y zona tratada. Los resultados son progresivos y duraderos."
-                    }
-                }
-            ]
         }
     ]
 };
@@ -173,7 +145,75 @@ const faqs = [
     {
         pregunta: "¿Quién NO es candidato para Morpheus8?",
         respuesta: "No recomendamos Morpheus8 si estás embarazada, tienes infecciones activas en la piel, usas isotretinoína (debes suspender 6 meses antes), tienes marcapasos o dispositivos electrónicos implantados, o trastornos de cicatrización como queloides activos."
+    },
+    {
+        pregunta: "¿Cuánto cuesta Morpheus8 en Los Ángeles?",
+        respuesta: "En Clínica Cialo una sesión de Morpheus8 facial tiene un valor entre $300.000 y $600.000, según las zonas a tratar. También existe un plan de 4 sesiones por $700.000. El valor exacto se define en la evaluación y puedes pagar en hasta 12 cuotas."
+    },
+    {
+        pregunta: "¿Morpheus8 sirve para el cuerpo?",
+        respuesta: "Sí. Con puntas de mayor profundidad se trata flacidez y textura en abdomen, brazos, muslos y rodillas, además de estrías y celulitis. El número de sesiones suele ser mayor que en el rostro."
     }
+];
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: faq.respuesta },
+    })),
+};
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Cuánto cuesta Morpheus8 en Los Ángeles?",
+        parrafos: [
+            "En Clínica Cialo una sesión de Morpheus8 facial tiene un valor entre $300.000 y $600.000. La diferencia depende de las zonas que se tratan en la misma sesión: solo rostro, rostro y cuello, o rostro, cuello y papada.",
+            "Como los mejores resultados se logran con varias sesiones, existe un plan de 4 sesiones por $700.000, que reduce bastante el valor de cada una. En la evaluación te indicamos cuántas sesiones necesitas y puedes pagar en hasta 12 cuotas.",
+        ],
+    },
+    {
+        titulo: "Morpheus8 vs HIFU: ¿cuál me conviene?",
+        parrafos: [
+            "Ambos estimulan colágeno sin cirugía, pero de forma distinta. El HIFU es ultrasonido focalizado: actúa en profundidad sin tocar la superficie de la piel, así que no hay recuperación visible y es ideal para tensar y mantener.",
+            "Morpheus8 combina microagujas con radiofrecuencia y trabaja tanto la profundidad como la superficie. Por eso, además de tensar, mejora la textura, los poros y las cicatrices de acné. A cambio, tiene uno a tres días de enrojecimiento. Muchas veces se combinan en un mismo plan.",
+        ],
+    },
+    {
+        titulo: "Morpheus8 para cicatrices de acné y textura",
+        parrafos: [
+            "Las cicatrices de acné son una de las indicaciones donde Morpheus8 da mejores resultados. Las microagujas rompen la fibrosis que hunde la cicatriz y la radiofrecuencia estimula colágeno nuevo que rellena el fondo de la marca de forma gradual.",
+            "Para cicatrices se suelen necesitar tres sesiones o más, separadas por cuatro a seis semanas. El resultado mejora durante varios meses después de la última sesión.",
+        ],
+    },
+    {
+        titulo: "Cuidados antes y después de Morpheus8",
+        parrafos: [
+            "Una buena preparación y los cuidados posteriores reducen la inflamación y protegen el resultado.",
+        ],
+        lista: [
+            "Suspende retinoides y exfoliantes cinco días antes de la sesión.",
+            "No tomes sol ni uses autobronceante las dos semanas previas.",
+            "Las primeras 24 horas no te maquilles y lava el rostro solo con agua y un limpiador suave.",
+            "Usa protector solar todos los días y evita el sol directo por una a dos semanas.",
+            "Las micro-costras desaparecen solas en pocos días: no las remuevas.",
+        ],
+    },
+    {
+        titulo: "¿Quién realiza Morpheus8 en Clínica Cialo?",
+        parrafos: [
+            "Morpheus8 es un tratamiento médico. En Clínica Cialo lo indican y realizan el Dr. Nicolás Laucirica, la Dra. Elga Viviana Peña y la Dra. Mauriluz Atencio, que en la evaluación definen las zonas, la profundidad de las agujas y la energía según tu piel.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Scizer HIFU", href: "/scizer-hifu-los-angeles/", descripcion: "Ultrasonido focalizado para tensar sin recuperación visible." },
+    { titulo: "Cicatrices de acné", href: "/cicatrices-acne-los-angeles/", descripcion: "Planes combinados para mejorar marcas y textura." },
+    { titulo: "Sculptra", href: "/sculptra-los-angeles/", descripcion: "Bioestimulador de colágeno para recuperar firmeza y volumen." },
+    { titulo: "Hydrafacial", href: "/hydrafacial-md-los-angeles/", descripcion: "Limpieza e hidratación profunda para mantener la piel." },
 ];
 
 export default function Morpheus8Page() {
@@ -182,6 +222,10 @@ export default function Morpheus8Page() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
             <Navbar transparent />
 
@@ -427,6 +471,14 @@ export default function Morpheus8Page() {
                         </div>
                     </div>
                 </section>
+
+                {/* Guía de contenido largo */}
+                <GuiaTratamiento
+                    titulo="Guía de Morpheus8 en Los Ángeles"
+                    intro="Precio, comparación con HIFU, cicatrices de acné y cuidados: lo que necesitas saber antes de tu primera sesión."
+                    secciones={guia}
+                    relacionados={relacionados}
+                />
 
                 {/* FAQs */}
                 <section className="py-20 bg-[#faf6ef]">

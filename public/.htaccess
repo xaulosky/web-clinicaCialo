@@ -2,6 +2,12 @@
   RewriteEngine On
   RewriteBase /
 
+  # Dominio único: www.cialo.cl → https://cialo.cl en un solo salto (http o https).
+  # Se excluye /.well-known/ para no romper la renovación automática del SSL.
+  RewriteCond %{HTTP_HOST} ^www\.cialo\.cl$ [NC]
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule ^ https://cialo.cl%{REQUEST_URI} [L,R=301]
+
   # Forzar HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

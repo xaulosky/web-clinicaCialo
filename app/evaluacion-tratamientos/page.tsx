@@ -3,8 +3,9 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 export const metadata = {
-    title: 'Evaluador de Tratamientos | Clínica Cialo',
+    title: 'Evaluador de Tratamientos',
     description: 'Descubre qué tratamiento es ideal para ti con nuestro evaluador interactivo inteligente. Resultados personalizados en segundos.',
+    alternates: { canonical: '/evaluacion-tratamientos/' },
 };
 
 export default function EvaluacionTratamientosPage() {

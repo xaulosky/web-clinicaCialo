@@ -27,8 +27,11 @@ export async function generateMetadata({ params }: PageProps) {
     }
 
     return {
-        title: `${producto.name} - ${producto.brand} | Clínica Cialo`,
+        title: { absolute: `${producto.name} - ${producto.brand} | Clínica Cialo` },
         description: producto.description,
+        alternates: {
+            canonical: `/productos/${producto.slug}/`,
+        },
         openGraph: {
             title: `${producto.name} - ${producto.brand} | Clínica Cialo`,
             description: producto.description,

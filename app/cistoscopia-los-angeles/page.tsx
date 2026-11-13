@@ -192,7 +192,7 @@ export default function CistoscopiaPage() {
                                         Agendar Consulta Urológica
                                     </a>
                                     <Link
-                                        href="/profesionales/dr-frank-ulloa"
+                                        href="/profesionales/frank-ulloa"
                                         className="inline-flex items-center justify-center gap-2 border border-[#b8935f] text-[#b8935f] px-8 py-4 font-semibold uppercase tracking-wider hover:bg-[#b8935f] hover:text-[#1b1a18] transition-colors"
                                     >
                                         Ver Especialista
@@ -275,7 +275,7 @@ export default function CistoscopiaPage() {
                                     Especialista en procedimientos endoscópicos y cirugía urológica mínimamente invasiva.
                                 </p>
                                 <Link
-                                    href="/profesionales/dr-frank-ulloa"
+                                    href="/profesionales/frank-ulloa"
                                     className="text-[#b8935f] font-medium hover:underline"
                                 >
                                     Ver perfil completo →

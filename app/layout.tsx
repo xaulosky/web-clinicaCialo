@@ -126,9 +126,8 @@ export const metadata: Metadata = {
     "urología estética",
   ],
   authors: [{ name: "Clínica Cialo" }],
-  alternates: {
-    canonical: '/',
-  },
+  // Sin canonical aquí: lo heredarían todas las páginas y apuntarían a la portada.
+  // Cada página declara el suyo en `alternates.canonical`.
   other: {
     'facebook-domain-verification': '1j3dhdqxajoxwftmpteegi4484t4xm',
   },

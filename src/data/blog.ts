@@ -2200,7 +2200,7 @@ Morpheus8 tiene cabezales corporales que penetran hasta 7mm, siendo efectivo par
 
 ## ¿Cuál es para ti?
 
-### Elige [Ultherapy](/ultherapy-los-angeles) si:
+### Elige Ultherapy si:
 - Tienes flacidez de leve a moderada.
 - Tu piel superficial está sana y bonita (sin manchas ni cicatrices).
 - **No puedes permitirte ningún día de recuperación** (necesitas volver al trabajo inmediatamente sin que nadie lo note).

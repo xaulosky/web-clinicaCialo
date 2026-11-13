@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: { absolute: "Convenios y Alianzas Estratégicas | Clínica Cialo Los Ángeles" },
     description: "Conoce nuestros convenios institucionales y alianzas estratégicas. Obtén beneficios exclusivos en medicina estética, tratamientos corporales y más.",
     keywords: "convenios clínica cialo, alianzas comerciales los angeles, beneficios socios club de golf, convenios medicina estetica",
+    alternates: { canonical: "/convenios/" },
 };
 
 const convenios = [

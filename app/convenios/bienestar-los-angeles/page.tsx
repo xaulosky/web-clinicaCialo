@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     title: "Convenio Clínica Cialo & Bienestar Los Ángeles | Beneficios Exclusivos",
     description: "Alianza estratégica entre Clínica Cialo y Bienestar Los Ángeles. 20% de descuento en tratamientos para funcionarios y sus familias.",
     keywords: "convenio bienestar los angeles, clinica cialo los angeles, descuentos medicina estetica los angeles, beneficios municipales",
+    alternates: { canonical: "/convenios/bienestar-los-angeles/" },
 };
 
 export default function BienestarPage() {

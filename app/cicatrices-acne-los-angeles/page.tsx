@@ -192,7 +192,7 @@ export default function CicatricesAcnePage() {
                                         Agendar Evaluación
                                     </a>
                                     <Link
-                                        href="/profesionales/dr-nicolas-laucirica"
+                                        href="/profesionales/nicolas-laucirica"
                                         className="inline-flex items-center justify-center gap-2 border border-[#b8935f] text-[#b8935f] px-8 py-4 font-semibold uppercase tracking-wider hover:bg-[#b8935f] hover:text-[#1b1a18] transition-colors"
                                     >
                                         Ver Especialista
@@ -275,7 +275,7 @@ export default function CicatricesAcnePage() {
                                     de cicatrices con tecnología láser y bioestimulación para resultados naturales.
                                 </p>
                                 <Link
-                                    href="/profesionales/dr-nicolas-laucirica"
+                                    href="/profesionales/nicolas-laucirica"
                                     className="text-[#b8935f] font-medium hover:underline"
                                 >
                                     Ver perfil completo →

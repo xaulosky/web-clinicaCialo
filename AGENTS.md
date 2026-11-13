@@ -56,7 +56,7 @@ All deploys are **manual via FTP from this machine**. GitHub (`xaulosky/web-clin
 - Frontend API base: `process.env.NEXT_PUBLIC_API_URL || 'https://api.cialo.cl'` (`src/lib/api.ts`).
 - `api.cialo.cl` is served entirely by `api/` (plain PHP).
 - JWT tokens stored in `localStorage`: `auth_token` for users, `adminToken` for the frontend admin panel.
-- Admin UI: Next.js `/admin/` — order/coupon/affiliate/commission management (client-side guard in `app/admin/layout.tsx`). The Laravel Filament admin in `backend/` is not deployed.
+- Admin UI: Next.js `/admin/` — order/coupon/affiliate/commission management (client-side guard in `app/admin/AdminShell.tsx`; `app/admin/layout.tsx` only sets `noindex` metadata). The Laravel Filament admin in `backend/` is not deployed.
 
 ## Image workflow
 

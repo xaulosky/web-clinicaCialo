@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 export const metadata: Metadata = {
     title: { absolute: "Scizer HIFU en Los Ángeles Chile | Clínica Cialo" },
@@ -63,27 +64,6 @@ const jsonLd = {
                 },
                 telephone: "+56 9 8202 8473"
             }
-        },
-        {
-            "@type": "FAQPage",
-            mainEntity: [
-                {
-                    "@type": "Question",
-                    name: "¿Qué es Scizer HIFU?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Scizer es un dispositivo de ultrasonido focalizado de alta intensidad (HIFU) que destruye las células grasas de forma permanente, calentándolas a 75°C sin dañar la piel ni los tejidos circundantes."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿Cuánta grasa se puede eliminar con Scizer?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Cada sesión puede reducir entre 2-4 cm de circunferencia en la zona tratada. Los resultados son permanentes ya que las células grasas destruidas no se regeneran."
-                    }
-                }
-            ]
         }
     ]
 };
@@ -161,8 +141,71 @@ const faqs = [
     {
         pregunta: "¿Quién NO es candidato para Scizer?",
         respuesta: "No recomendamos Scizer si estás embarazada, tienes hernias en la zona a tratar, sufres de enfermedades hepáticas o renales severas, tienes implantes metálicos en la zona, o buscas tratar obesidad (es para grasa localizada)."
-    }
+    },
+    {
+        pregunta: "¿Cuánto cuesta Scizer HIFU en Los Ángeles?",
+        respuesta: "En Clínica Cialo el tratamiento con Scizer HIFU parte desde $200.000. El valor final depende de la zona y del número de sesiones, y se define en la evaluación. Puedes pagar en hasta 12 cuotas.",
+    },
+    {
+        pregunta: "¿Sirve para bajar de peso?",
+        respuesta: "No. Scizer moldea zonas con grasa localizada que no responde a la dieta ni al ejercicio. Para bajar de peso lo indicado es un plan nutricional, que también ofrecemos en la clínica.",
+    },
 ];
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: faq.respuesta },
+    })),
+};
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Cuánto cuesta Scizer HIFU en Los Ángeles?",
+        parrafos: [
+            "En Clínica Cialo el tratamiento con Scizer HIFU parte desde $200.000. El valor final depende de la zona y de su tamaño: no es lo mismo tratar el abdomen completo que los flancos o la cara interna de los brazos.",
+            "En la evaluación revisamos tus zonas y te entregamos un plan con el número de sesiones y el valor total, que puedes pagar en hasta 12 cuotas.",
+        ],
+    },
+    {
+        titulo: "¿Cuántas sesiones necesito y cuándo veo resultados?",
+        parrafos: [
+            "Muchas personas notan cambios con una sesión por zona, pero para un resultado más marcado se suelen indicar entre dos y tres sesiones, separadas por algunas semanas.",
+            "El resultado no es inmediato: el cuerpo elimina las células grasas destruidas de forma gradual, por lo que la reducción se aprecia entre las 8 y 12 semanas posteriores a cada sesión.",
+        ],
+    },
+    {
+        titulo: "Scizer HIFU vs criolipólisis vs liposucción",
+        parrafos: [
+            "Scizer y la criolipólisis eliminan grasa localizada sin cirugía: Scizer lo hace con calor de ultrasonido focalizado y la criolipólisis con frío. Ambos son buenas alternativas para quienes no quieren pasar por un quirófano; la elección depende de la zona y del tipo de grasa.",
+            "La liposucción permite retirar más grasa en una sola intervención, pero requiere cirugía, anestesia y recuperación. Para acumulaciones puntuales en personas cerca de su peso ideal, los tratamientos no invasivos suelen ser suficientes.",
+        ],
+    },
+    {
+        titulo: "Scizer no es un tratamiento para bajar de peso",
+        parrafos: [
+            "Scizer está pensado para moldear zonas puntuales que no responden a la dieta ni al ejercicio, no para bajar kilos. Las células eliminadas no vuelven, pero si se sube de peso las células que quedan pueden crecer.",
+            "Por eso los mejores resultados se dan cuando el tratamiento se acompaña de alimentación equilibrada, actividad física y buena hidratación. Si tu objetivo es bajar de peso, te podemos orientar con nuestro equipo de nutrición.",
+        ],
+    },
+    {
+        titulo: "¿Quién realiza Scizer HIFU en Clínica Cialo?",
+        parrafos: [
+            "El tratamiento lo realizan profesionales de la salud capacitadas en el equipo: las kinesiólogas Keren Matus y Katalina Neumann y la enfermera María Jesús Contreras, que en la evaluación definen las zonas y la profundidad de trabajo.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Clatuu Alpha", href: "/clatuu-alpha-los-angeles/", descripcion: "Criolipólisis 360° para eliminar grasa localizada con frío." },
+    { titulo: "Exilis Ultra 360", href: "/exilis-ultra-360-los-angeles/", descripcion: "Radiofrecuencia y ultrasonido para flacidez y grasa." },
+    { titulo: "Drenaje linfático", href: "/drenaje-linfatico-los-angeles/", descripcion: "Complementa los tratamientos corporales y reduce la retención." },
+    { titulo: "Tratamientos corporales", href: "/corporal-contorno-los-angeles/", descripcion: "Todos los tratamientos de contorno de la clínica." },
+];
+
 
 export default function ScizerHIFUPage() {
     return (
@@ -170,6 +213,10 @@ export default function ScizerHIFUPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
             <Navbar transparent />
 
@@ -362,6 +409,14 @@ export default function ScizerHIFUPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* Guía de contenido largo */}
+                <GuiaTratamiento
+                    titulo="Guía de Scizer HIFU en Los Ángeles"
+                    intro="Precio, sesiones, resultados y cómo se compara con otros tratamientos para la grasa localizada."
+                    secciones={guia}
+                    relacionados={relacionados}
+                />
 
                 {/* FAQs */}
                 <section className="py-20 bg-[#faf6ef]">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 export const metadata: Metadata = {
     title: { absolute: "HydraFacial MD en Los Ángeles Chile | Clínica Cialo" },
@@ -63,27 +64,6 @@ const jsonLd = {
                 },
                 telephone: "+56 9 8202 8473"
             }
-        },
-        {
-            "@type": "FAQPage",
-            mainEntity: [
-                {
-                    "@type": "Question",
-                    name: "¿Qué es HydraFacial?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "HydraFacial MD es un tratamiento de resurfacing facial que utiliza tecnología Vortex-Fusion para limpiar, exfoliar, extraer impurezas e hidratar la piel en una sola sesión de 30 minutos."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿HydraFacial es apto para todo tipo de piel?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Sí. HydraFacial es seguro y efectivo para todos los tipos de piel, incluyendo piel sensible, grasa, seca, mixta, envejecida y con tendencia acneica."
-                    }
-                }
-            ]
         }
     ]
 };
@@ -175,8 +155,71 @@ const faqs = [
     {
         pregunta: "¿Cómo se compara con una limpieza facial tradicional?",
         respuesta: "A diferencia de las limpiezas faciales tradicionales que pueden ser invasivas y dejar la piel enrojecida, HydraFacial utiliza tecnología Vortex para una extracción suave y sin dolor. Además, infusiona activos mientras limpia, logrando resultados más profundos y duraderos."
-    }
+    },
+    {
+        pregunta: "¿Cuánto cuesta un HydraFacial en Los Ángeles?",
+        respuesta: "En Clínica Cialo una sesión de HydraFacial MD tiene un valor de $80.000 e incluye limpieza, exfoliación, extracción e hidratación. Se pueden agregar sueros específicos según tu objetivo.",
+    },
+    {
+        pregunta: "¿Cada cuánto se recomienda?",
+        respuesta: "Una sesión al mes es lo ideal para mantener la piel limpia e hidratada. Para objetivos puntuales se puede partir con sesiones más seguidas.",
+    },
 ];
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: faq.respuesta },
+    })),
+};
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Cuánto cuesta un HydraFacial en Los Ángeles?",
+        parrafos: [
+            "En Clínica Cialo una sesión de HydraFacial MD tiene un valor de $80.000. Incluye limpieza, exfoliación, extracción por succión e hidratación con sueros, en una sesión de 30 a 45 minutos.",
+            "Si quieres potenciar algún objetivo, como manchas, poros o arrugas finas, se pueden agregar sueros específicos (boosters). En la consulta te recomendamos la combinación según tu piel.",
+        ],
+    },
+    {
+        titulo: "¿Cada cuánto conviene hacerse un HydraFacial?",
+        parrafos: [
+            "Para mantener la piel limpia, hidratada y luminosa, lo ideal es una sesión al mes, que coincide con el ciclo de renovación de la piel. Si tienes un objetivo puntual, como mejorar la textura o los poros, se puede partir con varias sesiones más seguidas.",
+            "También es una excelente opción antes de un evento: la piel luce más luminosa el mismo día y no hay enrojecimiento que esconder.",
+        ],
+    },
+    {
+        titulo: "HydraFacial vs limpieza facial tradicional",
+        parrafos: [
+            "Una limpieza facial tradicional extrae los comedones de forma manual, apretando la piel, lo que puede dejar enrojecimiento o marcas por algunos días. HydraFacial hace la extracción por succión, sin presión, y al mismo tiempo infunde sueros hidratantes.",
+            "El resultado es una limpieza profunda con mínima irritación y sin tiempo de recuperación. La limpieza manual sigue siendo útil en algunos casos, y en la evaluación te recomendamos la que mejor se adapta a tu piel.",
+        ],
+    },
+    {
+        titulo: "¿Para qué tipos de piel sirve?",
+        parrafos: [
+            "HydraFacial se adapta a casi todas las pieles: grasa, seca, mixta, sensible, con acné leve o con signos de envejecimiento. Los sueros y la intensidad se ajustan según el caso.",
+            "Si tienes acné inflamatorio activo, rosácea en brote, heridas o una quemadura de sol reciente, conviene tratar eso primero o adaptar el protocolo. Avísanos en la evaluación.",
+        ],
+    },
+    {
+        titulo: "¿Quién realiza HydraFacial en Clínica Cialo?",
+        parrafos: [
+            "El tratamiento lo realizan profesionales de la salud capacitadas en el equipo: la enfermera María Jesús Contreras, las kinesiólogas Keren Matus y Katalina Neumann, y la Dra. Elga Viviana Peña.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Limpieza facial manual", href: "/tratamientos/limpieza-facial-manual/", descripcion: "Limpieza profunda tradicional con extracción manual." },
+    { titulo: "Hollywood Peel", href: "/tratamientos/hollywood-peel/", descripcion: "Láser para luminosidad y poros, sin recuperación." },
+    { titulo: "Morpheus8", href: "/morpheus8-los-angeles/", descripcion: "Tensado y textura para resultados más profundos." },
+    { titulo: "Rosácea", href: "/rosacea-los-angeles/", descripcion: "Tratamiento médico del enrojecimiento facial." },
+];
+
 
 export default function HydraFacialMDPage() {
     return (
@@ -184,6 +227,10 @@ export default function HydraFacialMDPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
             <Navbar transparent />
 
@@ -330,6 +377,14 @@ export default function HydraFacialMDPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* Guía de contenido largo */}
+                <GuiaTratamiento
+                    titulo="Guía de HydraFacial en Los Ángeles"
+                    intro="Precio, frecuencia recomendada y en qué se diferencia de una limpieza facial tradicional."
+                    secciones={guia}
+                    relacionados={relacionados}
+                />
 
                 {/* FAQs */}
                 <section className="py-20 bg-white">

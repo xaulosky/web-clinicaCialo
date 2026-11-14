@@ -175,10 +175,10 @@ const guia: SeccionGuia[] = [
         ],
     },
     {
-        titulo: "Morpheus8 vs HIFU: ¿cuál me conviene?",
+        titulo: "Morpheus8 vs HIFU: ¿en qué se diferencian?",
         parrafos: [
             "Ambos estimulan colágeno sin cirugía, pero de forma distinta. El HIFU es ultrasonido focalizado: actúa en profundidad sin tocar la superficie de la piel, así que no hay recuperación visible y es ideal para tensar y mantener.",
-            "Morpheus8 combina microagujas con radiofrecuencia y trabaja tanto la profundidad como la superficie. Por eso, además de tensar, mejora la textura, los poros y las cicatrices de acné. A cambio, tiene uno a tres días de enrojecimiento. Muchas veces se combinan en un mismo plan.",
+            "Morpheus8 combina microagujas con radiofrecuencia y trabaja tanto la profundidad como la superficie. Por eso, además de tensar, mejora la textura, los poros y las cicatrices de acné. A cambio, tiene uno a tres días de enrojecimiento. Si lo que buscas es reducir grasa corporal, en la clínica usamos Scizer, un HIFU corporal pensado para ese objetivo.",
         ],
     },
     {
@@ -210,7 +210,7 @@ const guia: SeccionGuia[] = [
 ];
 
 const relacionados: TratamientoRelacionado[] = [
-    { titulo: "Scizer HIFU", href: "/scizer-hifu-los-angeles/", descripcion: "Ultrasonido focalizado para tensar sin recuperación visible." },
+    { titulo: "Exilis Ultra 360", href: "/exilis-ultra-360-los-angeles/", descripcion: "Radiofrecuencia y ultrasonido para flacidez facial y corporal." },
     { titulo: "Cicatrices de acné", href: "/cicatrices-acne-los-angeles/", descripcion: "Planes combinados para mejorar marcas y textura." },
     { titulo: "Sculptra", href: "/sculptra-los-angeles/", descripcion: "Bioestimulador de colágeno para recuperar firmeza y volumen." },
     { titulo: "Hydrafacial", href: "/hydrafacial-md-los-angeles/", descripcion: "Limpieza e hidratación profunda para mantener la piel." },

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 import YouTubeVideo from "@/app/components/YouTubeVideo";
 
 export const metadata: Metadata = {
@@ -55,35 +56,6 @@ const jsonLd = {
                 telephone: "+56 9 8202 8473",
                 priceRange: "$240.000 CLP"
             }
-        },
-        {
-            "@type": "FAQPage",
-            mainEntity: [
-                {
-                    "@type": "Question",
-                    name: "¿Cuánto dura la rinomodelación?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Los resultados de la rinomodelación con ácido hialurónico duran entre 12 a 18 meses, dependiendo del metabolismo de cada persona y el producto utilizado."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿Cuál es la diferencia entre rinomodelación y rinoplastia?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "La rinomodelación es un procedimiento no quirúrgico con ácido hialurónico que ofrece resultados temporales y no puede reducir el tamaño de la nariz. La rinoplastia es una cirugía que modifica la estructura ósea y cartilaginosa para resultados permanentes."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿La rinomodelación duele?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "El procedimiento es mínimamente doloroso. Se aplica anestesia tópica antes de las inyecciones, y la mayoría de pacientes describe solo una leve presión durante el tratamiento."
-                    }
-                }
-            ]
         }
     ]
 };
@@ -182,8 +154,69 @@ const faqs = [
     {
         pregunta: "¿Quién NO es candidato para rinomodelación?",
         respuesta: "No recomendamos la rinomodelación si: tienes una nariz muy grande y quieres reducirla (necesitas rinoplastia), tienes problemas de respiración o tabique desviado funcional, estás embarazada o en lactancia, tienes antecedentes de reacciones alérgicas al ácido hialurónico, o tomas anticoagulantes sin poder suspenderlos."
-    }
+    },
+    {
+        pregunta: "¿Cuánto cuesta la rinomodelación en Los Ángeles?",
+        respuesta: "En Clínica Cialo la rinomodelación tiene un valor desde $240.000, que incluye la evaluación y el retoque. Puedes pagar en hasta 12 cuotas.",
+    },
+    {
+        pregunta: "¿Puedo usar lentes después de la rinomodelación?",
+        respuesta: "Conviene evitar lentes apoyados sobre el puente nasal durante una a dos semanas, para no desplazar el producto mientras se asienta.",
+    },
 ];
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: faq.respuesta },
+    })),
+};
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Cuánto cuesta la rinomodelación en Los Ángeles?",
+        parrafos: [
+            "En Clínica Cialo la rinomodelación tiene un valor desde $240.000, que incluye la evaluación y el retoque. El valor final depende de lo que se busca corregir y de la cantidad de ácido hialurónico necesaria.",
+            "Es una alternativa bastante más accesible que una rinoplastia quirúrgica, sin anestesia general ni recuperación. Puedes pagar en hasta 12 cuotas.",
+        ],
+    },
+    {
+        titulo: "Cuidados después de la rinomodelación",
+        parrafos: [
+            "Los primeros días el producto termina de asentarse. Estas indicaciones ayudan a mantener la forma lograda.",
+        ],
+        lista: [
+            "No presiones ni masajees la nariz durante la primera semana.",
+            "Evita usar lentes ópticos o de sol apoyados sobre el puente nasal por una a dos semanas.",
+            "No hagas ejercicio intenso, sauna ni exposición al calor fuerte por 48 horas.",
+            "Consulta de inmediato si notas dolor intenso o un cambio de color en la piel de la nariz.",
+        ],
+    },
+    {
+        titulo: "¿Por qué la experiencia del médico es clave?",
+        parrafos: [
+            "La nariz tiene una irrigación delicada y es una de las zonas que exige más conocimiento anatómico para inyectar ácido hialurónico. Por eso en Clínica Cialo la rinomodelación la realizan exclusivamente médicos con formación en anatomía facial: el Dr. Nicolás Laucirica y la Dra. Elga Viviana Peña.",
+            "Además se usan técnicas y cantidades conservadoras, y como el ácido hialurónico es reversible, cualquier ajuste se puede corregir con hialuronidasa.",
+        ],
+    },
+    {
+        titulo: "Rinomodelación y armonización del perfil",
+        parrafos: [
+            "Muchas veces la nariz se ve más grande o prominente por la falta de proyección del mentón o de los labios. Por eso en la evaluación se analiza el perfil completo y, si corresponde, se propone combinar la rinomodelación con relleno de mentón o de labios para un resultado más armónico.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Relleno de labios", href: "/relleno-labios-los-angeles/", descripcion: "Volumen y definición para equilibrar el perfil." },
+    { titulo: "Toxina botulínica", href: "/toxina-botulinica-tercio-superior-los-angeles/", descripcion: "Suaviza arrugas de frente, entrecejo y patas de gallo." },
+    { titulo: "Mentoplastía", href: "/mentoplastia-los-angeles/", descripcion: "Cirugía para proyectar el mentón y equilibrar el perfil." },
+    { titulo: "Estética facial", href: "/estetica-facial-en-los-angeles/", descripcion: "Todos los tratamientos faciales de la clínica." },
+];
+
 
 export default function RinomodelacionPage() {
     return (
@@ -191,6 +224,10 @@ export default function RinomodelacionPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
             <Navbar transparent />
 
@@ -616,6 +653,14 @@ export default function RinomodelacionPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* Guía de contenido largo */}
+                <GuiaTratamiento
+                    titulo="Guía de la rinomodelación en Los Ángeles"
+                    intro="Precio, duración del resultado, cuidados y por qué la experiencia del médico es tan importante en este procedimiento."
+                    secciones={guia}
+                    relacionados={relacionados}
+                />
 
                 {/* FAQs */}
                 <section className="py-20 bg-[#faf6ef]">

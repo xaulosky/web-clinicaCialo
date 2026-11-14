@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 export const metadata: Metadata = {
     title: { absolute: "Sculptra en Los Ángeles Chile | Clínica Cialo" },
@@ -53,27 +54,6 @@ const jsonLd = {
                 },
                 telephone: "+56 9 8202 8473"
             }
-        },
-        {
-            "@type": "FAQPage",
-            mainEntity: [
-                {
-                    "@type": "Question",
-                    name: "¿Cuánto dura el efecto de Sculptra?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Los efectos de Sculptra duran entre 18 y 24 meses, y en algunos casos hasta 2-3 años. Es uno de los tratamientos con mayor duración en medicina estética facial."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    name: "¿Cuántas sesiones de Sculptra necesito?",
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Generalmente se recomiendan 2-3 sesiones espaciadas cada 4-6 semanas para obtener resultados óptimos. El número exacto depende de la edad y el grado de flacidez."
-                    }
-                }
-            ]
         }
     ]
 };
@@ -149,8 +129,71 @@ const faqs = [
     {
         pregunta: "¿En qué zonas NO se puede aplicar Sculptra?",
         respuesta: "Sculptra no se aplica en labios, nariz, frente ni en el área periocular muy cercana al ojo. Para esas zonas hay opciones más adecuadas como ácido hialurónico específico."
-    }
+    },
+    {
+        pregunta: "¿Cuánto cuesta Sculptra en Los Ángeles?",
+        respuesta: "En Clínica Cialo cada sesión de Sculptra facial tiene un valor entre $480.000 y $500.000, y el tratamiento corporal parte desde $500.000. El número de sesiones se define en la evaluación y puedes pagar en hasta 12 cuotas.",
+    },
+    {
+        pregunta: "¿Qué cuidados hay que tener después de Sculptra?",
+        respuesta: "El más importante es el masaje: cinco minutos, cinco veces al día, durante cinco días. Además conviene evitar el maquillaje las primeras horas, el ejercicio intenso por 24 horas y el sol directo mientras haya inflamación.",
+    },
 ];
+
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: faq.respuesta },
+    })),
+};
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Cuánto cuesta Sculptra en Los Ángeles?",
+        parrafos: [
+            "En Clínica Cialo cada sesión de Sculptra facial tiene un valor entre $480.000 y $500.000. El tratamiento corporal, por ejemplo en glúteos, parte desde $500.000 por sesión.",
+            "Como el resultado se construye con varias sesiones, en la evaluación te indicamos cuántas necesitas según tu grado de pérdida de volumen y te entregamos el valor total del plan. Puedes pagar en hasta 12 cuotas.",
+        ],
+    },
+    {
+        titulo: "¿Cuándo conviene Sculptra en lugar de ácido hialurónico?",
+        parrafos: [
+            "El ácido hialurónico es ideal para dar volumen o definición inmediata en zonas puntuales, como labios, ojeras o mentón. Sculptra, en cambio, trata la calidad y la firmeza de la piel en toda una zona, y su efecto es gradual.",
+            "Por eso Sculptra suele ser la mejor opción cuando el rostro se ve más flácido o vacío de forma general, por ejemplo después de los 35 o 40 años o tras una baja de peso importante. Muchas veces ambos tratamientos se combinan.",
+        ],
+    },
+    {
+        titulo: "La regla 5-5-5: el masaje después de Sculptra",
+        parrafos: [
+            "Después de cada sesión es importante masajear la zona tratada para que el producto se distribuya de forma pareja. La indicación habitual es la regla 5-5-5: cinco minutos de masaje, cinco veces al día, durante cinco días.",
+            "Este paso, junto con una buena técnica de aplicación, reduce el riesgo de que se formen pequeños nódulos bajo la piel, que es la complicación más conocida de los bioestimuladores.",
+        ],
+    },
+    {
+        titulo: "Sculptra corporal: glúteos, brazos y abdomen",
+        parrafos: [
+            "Sculptra también se usa en el cuerpo para mejorar la flacidez y la textura de la piel. Las zonas más tratadas son glúteos, cara interna de brazos y muslos, abdomen, rodillas y escote.",
+            "En glúteos no busca un aumento de volumen como un implante, sino una piel más firme y un contorno más definido, con un resultado natural que mejora durante varios meses.",
+        ],
+    },
+    {
+        titulo: "¿Quién aplica Sculptra en Clínica Cialo?",
+        parrafos: [
+            "Sculptra lo indican y aplican médicos con experiencia en bioestimuladores: el Dr. Nicolás Laucirica, la Dra. Elga Viviana Peña y la Dra. Mauriluz Atencio. La técnica de dilución y aplicación es clave para obtener un resultado parejo y seguro.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Sculptra corporal", href: "/tratamientos/sculptra-corporal/", descripcion: "Firmeza y contorno en glúteos, brazos y abdomen." },
+    { titulo: "Morpheus8", href: "/morpheus8-los-angeles/", descripcion: "Radiofrecuencia con microagujas para tensar y mejorar textura." },
+    { titulo: "Relleno de ojeras", href: "/relleno-ojeras-los-angeles/", descripcion: "Ácido hialurónico para el surco y la mirada cansada." },
+    { titulo: "Toxina botulínica", href: "/toxina-botulinica-tercio-superior-los-angeles/", descripcion: "Suaviza arrugas de expresión en frente y entrecejo." },
+];
+
 
 export default function SculptraPage() {
     return (
@@ -158,6 +201,10 @@ export default function SculptraPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
             <Navbar transparent />
 
@@ -296,6 +343,14 @@ export default function SculptraPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* Guía de contenido largo */}
+                <GuiaTratamiento
+                    titulo="Guía de Sculptra en Los Ángeles"
+                    intro="Precio, número de sesiones, cuidados y cuándo conviene elegir un bioestimulador en lugar de un relleno."
+                    secciones={guia}
+                    relacionados={relacionados}
+                />
 
                 {/* FAQs */}
                 <section className="py-20 bg-white">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import GuiaTratamiento, { SeccionGuia, TratamientoRelacionado } from "@/app/components/GuiaTratamiento";
 
 export const metadata: Metadata = {
     title: { absolute: "Relleno de Ojeras en Los Ángeles | Clínica CIALO" },
@@ -50,7 +51,71 @@ const faqs = [
         q: "¿Cuándo puedo maquillarme?",
         a: "Se recomienda esperar 24 horas antes de maquillarse. También se sugiere evitar actividad física intensa y calor directo (sauna, sol) por 48 horas.",
     },
+    {
+        q: "¿El relleno de ojeras sirve para las bolsas?",
+        a: "Solo en casos leves, donde el relleno disimula el desnivel entre la bolsa y la mejilla. Si las bolsas son grandes, el relleno puede empeorarlas y lo indicado es una blefaroplastia.",
+    },
+    {
+        q: "¿Sirve para las ojeras oscuras?",
+        a: "Depende del origen. Si lo oscuro es la sombra del surco hundido, sí mejora. Si es pigmento en la piel, el relleno no lo corrige y se tratan con despigmentantes, peelings o láser.",
+    },
 ];
+
+const guia: SeccionGuia[] = [
+    {
+        titulo: "¿Qué tipo de ojera tienes?",
+        parrafos: [
+            "Antes de tratar una ojera hay que saber de dónde viene, porque cada tipo responde a un tratamiento distinto. Muchas personas tienen una mezcla de varias.",
+        ],
+        lista: [
+            "Ojera hundida o surco: una depresión entre el párpado inferior y la mejilla que proyecta sombra. Es la que mejor responde al relleno con ácido hialurónico.",
+            "Ojera pigmentada: un tono café u oscuro en la piel. No se corrige con relleno, sino con despigmentantes, peelings o láser.",
+            "Ojera vascular: un tono violáceo por vasos que se transparentan bajo una piel fina. Mejora con bioestimuladores que engrosan la piel.",
+            "Bolsas: grasa que protruye bajo el ojo. El relleno puede disimularlas en casos leves, pero cuando son marcadas la solución es la blefaroplastia.",
+        ],
+    },
+    {
+        titulo: "Ácido hialurónico o Juvelook: ¿cuál me conviene?",
+        parrafos: [
+            "El ácido hialurónico rellena el surco de forma inmediata: al salir de la consulta la sombra ya se ve atenuada. Es la opción indicada cuando el problema principal es el hundimiento.",
+            "Juvelook es un bioestimulador pensado para la zona de la ojera. No rellena de inmediato, sino que estimula colágeno y engrosa la piel de a poco, por lo que es útil en ojeras con piel muy fina o con tono violáceo. En la evaluación se define si conviene uno, el otro o una combinación.",
+        ],
+    },
+    {
+        titulo: "¿Quién es buen candidato para el relleno de ojeras?",
+        parrafos: [
+            "El mejor resultado se da en personas con un surco marcado, piel de buena calidad y sin bolsas grandes. La evaluación médica es indispensable, porque un relleno en el lugar o la cantidad equivocada puede empeorar el aspecto de la zona.",
+            "No se recomienda durante el embarazo o la lactancia, con infecciones activas en la zona, ni cuando las bolsas son el problema principal. En esos casos se proponen otras alternativas.",
+        ],
+    },
+    {
+        titulo: "Cuidados antes y después del relleno de ojeras",
+        parrafos: [
+            "La zona bajo los ojos es delicada y tiende a inflamarse. Estas indicaciones ayudan a que el resultado se asiente bien.",
+        ],
+        lista: [
+            "Evita alcohol, aspirina y antiinflamatorios dos días antes, salvo indicación médica.",
+            "Las primeras 24 horas no te maquilles ni presiones la zona.",
+            "Duerme con la cabeza algo elevada la primera noche para reducir la hinchazón.",
+            "Evita ejercicio intenso, sauna y sol directo por 48 horas.",
+            "Un pequeño moretón es posible y desaparece en pocos días.",
+        ],
+    },
+    {
+        titulo: "¿Cuánto cuesta el relleno de ojeras?",
+        parrafos: [
+            "El valor se define en la evaluación, porque depende de la cantidad de producto que necesita tu surco y de si conviene combinarlo con un bioestimulador. Recibes el presupuesto antes de decidir y puedes pagar en hasta 12 cuotas.",
+        ],
+    },
+];
+
+const relacionados: TratamientoRelacionado[] = [
+    { titulo: "Juvelook", href: "/tratamientos/juvelook/", descripcion: "Bioestimulador para ojeras con piel fina o tono violáceo." },
+    { titulo: "Blefaroplastia", href: "/blefaroplastia-los-angeles/", descripcion: "Cirugía de párpados para bolsas y exceso de piel." },
+    { titulo: "Toxina botulínica", href: "/toxina-botulinica-tercio-superior-los-angeles/", descripcion: "Suaviza las patas de gallo y las líneas de la frente." },
+    { titulo: "Relleno de labios", href: "/relleno-labios-los-angeles/", descripcion: "Ácido hialurónico para volumen y definición natural." },
+];
+
 
 const jsonLd = {
     "@context": "https://schema.org",
@@ -330,6 +395,14 @@ export default function RellenoOjerasPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Guía de contenido largo */}
+            <GuiaTratamiento
+                titulo="Guía del relleno de ojeras en Los Ángeles"
+                intro="No todas las ojeras se tratan igual. Te explicamos cuál es la tuya, qué tratamiento le corresponde y qué esperar del relleno."
+                secciones={guia}
+                relacionados={relacionados}
+            />
 
             {/* ── FAQs ── */}
             <section className="bg-cream py-20 sm:py-24">
